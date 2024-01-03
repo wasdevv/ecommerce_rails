@@ -1,3 +1,13 @@
 * {
     font-family: Poppins, sans-serif;
 }
+
+.product-details {
+    width: 200px;
+    padding: 20px;
+    background-color: transparent;
+    border: 1px solid #e5e5e5;
+    border-radius: 5px;
+    float: left;
+    margin-right: 20px;
+}

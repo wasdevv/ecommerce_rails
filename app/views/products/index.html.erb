@@ -1,1 +1,9 @@
-oi
+<% @products.each do |product| %>
+
+<div class="product-details">
+  <h2>Name: <%= product.name%></h2>
+  <p>Quantity: <%= product.quantity%></p>
+  <p>Price: <%= number_to_currency(product.price)%></p>
+  <p>Description: <%= product.description%></p>
+</div>
+<% end %>

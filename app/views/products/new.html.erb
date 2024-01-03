@@ -1,0 +1,21 @@
+<div class="text-center">
+<p>New <strong>Product</strong></p>
+</div>
+
+<%= form_for @product do |f| %>
+
+<%= f.label :Nome %>
+<%= f.text_field :name, placeholder: "Type a name" %>
+<br>
+<%= f.label :Quantidade %>
+<%= f.number_field :quantity, placeholder: "Type a Quantity" %>
+<br>
+<%= f.label :Preço %>
+<%= f.number_field :price, placeholder: "Type a Price" %>
+<br>
+<%= f.label :Descrição %>
+<%= f.text_field :description, placeholder: "Type a Description" %>
+<br>
+<br>
+<%= f.submit 'Create Product' %>
+<% end %>
