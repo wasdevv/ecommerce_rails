@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :carts do
     member do
       get '/new_cart', to: 'carts#new', as: :new_cart # Cart
+      match '/add_to_cart/product_id', action: :add_to_cart, via: [:get, :post], as: :add_to_cart # CartItem, Cart, and Product
     end
   end
   get '/about', to: 'home#about', as: :about
