@@ -1,0 +1,49 @@
+class CartsController < ApplicationController
+    before_action :authenticate_user!, only: [:add_to_cart]
+
+    # without payment logistic, ONLY BACK-END
+    def new
+        # if the user have one cart
+        if current_user.cart.present?
+            redirect_to cart_path(current_user.cart)
+        else
+            # make a new cart
+            @cart = current_user.build_cart
+
+            # if make correcly the cart
+            if @cart.save
+                create_activity_log(:created_Cart, @cart, details: { message: 'Created a cart' })
+                redirect_to cart_path(current_user.cart)
+            end
+        end
+    end
+
+    def add_to_cart
+
+        @product = Product.find_by(id: params[:product_id])
+        if current_user.id == @product.user_:id => 
+            flash[:error] = "You can not buy your own product"
+            redirect_to root_path
+            return
+        end
+
+        if @product
+            @cart = current_user.cart || current_user.build_cart
+            cart_item = @cart.cart_items.find_or_initialize_by( product: @product )
+            cart_item.quantity ||= 1
+            cart_Item.assign_attributes(price: @product.price)
+            cart_item.save!
+
+            create_activity_log(:added_to_cart, cart_item, details: { message: 'Product added to cart' })
+        end
+
+        redirect_to cart_path, notice: 'Product added to your cart.'
+        return
+    end
+
+    private
+
+    def create_activity_log(action, trackable, details: {})
+        ActivityLog.create!(user: current_user, action: action, trackable: trackable, details: details)
+    end
+end

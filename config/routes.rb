@@ -13,7 +13,12 @@ Rails.application.routes.draw do
       get 'search'
     end
   end
-  
+
+  resources :carts do
+    member do
+      get '/new_cart', to: 'carts#new', as: :new_cart # Cart
+    end
+  end
   get '/about', to: 'home#about', as: :about
   # get :about, on: :collection
 
