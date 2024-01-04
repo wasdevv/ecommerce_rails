@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     member do
       get '/new_cart', to: 'carts#new', as: :new_cart # Cart
       match '/add_to_cart/product_id', action: :add_to_cart, via: [:get, :post], as: :add_to_cart # CartItem, Cart, and Product
+      match '/remove_product_from_cart/:product_id', action: :remove_product_from_cart, via: [:get, :delete], as: :remove_product_from_cart
+      
+      get '/checkout', to: 'carts#checkout', as: :checkout # CartItem
+      match 'destroy_all_items', via: [:get, :post]
     end
   end
   

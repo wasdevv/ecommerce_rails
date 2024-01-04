@@ -133,4 +133,90 @@
     font-weight: bold;
 }
 
-/* coming soon! */
+/* _cart_table.html.erb */
+
+.button-container {
+    background: transparent;
+    top: 120px;
+    right: 60px;
+    position: absolute;
+    flex-direction: column;
+    color: #fff;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid  #fff;
+    border-radius: 5px;
+    float: right;
+    display: flex;
+}
+
+.custom-text {
+    text-align: justify;
+    color: #333
+}
+
+/* box-add_cart */
+.button-container {
+    background: #fff;
+    top: 120px;
+    right: 60px;
+    position: absolute;
+    flex-direction: column;
+    color: #fff;
+    padding: 20px;
+    width: 250px;
+    height: 250px;
+    border: 1px solid  #fff;
+    border-radius: 5px;
+    float: right;
+    display: flex;
+}
+
+/* buttons of _Cart_table.html.erb */
+
+.button1 {
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px 10px;
+    border: 2px solid rgba(30, 30, 30, 30);
+    border-radius: 5px;
+    background: transparent;
+}
+
+.button1:hover {
+    color: #1e1e1e;
+    cursor: pointer;
+    box-shadow: 0 0 3px #1e1e1e;
+}
+
+.button2 {
+    text-align: center;
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 5px 10px;
+    border: 2px solid rgba(30, 30, 30, 30);
+    border-radius: 5px;
+    background: transparent;
+}
+
+.button2:hover {
+    color: #1e1e1e;
+    cursor: pointer;
+    box-shadow: 0 0 3px #1e1e1e
+}
+
+.container .button1 {
+    margin-top: 40px;
+}
+
+.container .button2 {
+    margin-top: 40px;
+}
+
+.floating-box p {
+    margin: 0px;
+}

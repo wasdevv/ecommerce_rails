@@ -1,0 +1,17 @@
+<br>
+<br>
+<br>
+<br>
+
+<% order_number = 1 %>
+<% @orders.order(id: :asc).each do |order| %>
+  <p>Pedido <%= order_number %></p>
+  
+  <ul>
+    <% order.order_items.each do |order_item| %>
+      <li><%= order_item.product.name %></li> - Quantidade: <%= order_item.quantity %>
+    <% end %>
+  </ul>
+
+  <% order_number += 1 %>
+<% end %>

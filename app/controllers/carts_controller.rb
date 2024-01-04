@@ -21,7 +21,7 @@ class CartsController < ApplicationController
     def add_to_cart
 
         @product = Product.find_by(id: params[:product_id])
-        if current_user.id == @product.user_:id => 
+        if current_user.id == @product.user_id
             flash[:error] = "You can not buy your own product"
             redirect_to root_path
             return
@@ -31,7 +31,7 @@ class CartsController < ApplicationController
             @cart = current_user.cart || current_user.build_cart
             cart_item = @cart.cart_items.find_or_initialize_by( product: @product )
             cart_item.quantity ||= 1
-            cart_Item.assign_attributes(price: @product.price)
+            cart_item.assign_attributes(price: @product.price)
             cart_item.save!
 
             create_activity_log(:added_to_cart, cart_item, details: { message: 'Product added to cart' })
@@ -59,14 +59,62 @@ class CartsController < ApplicationController
             else
                 redirect_to cart_path(current_user.cart), notice: 'Your product has benn removed from your cart'
             end
+        else
+            redirect_to @cart, notice: 'Not possible to remove your product, try again.'
         end
-    else
-        redirect_to @cart, notice: 'Not possible to remove your product, try again.'
+    end
+
+    def destroy
+        current_user.destroy
+        create_activity_log(:deleted_cart, @cart, details: { message: 'Deleted a cart'})
+
+        @order = current_user.orders.build
+
+        @cart_items.each do |cart_item|
+            @order.order_items.build(
+                product: cart_item.product,
+                quantity: cart_item.quantity,
+                price: cart_item.price
+            )
+        end
+
+        if @order.save
+            create_activity_log(:created_order, @order, details: { message: 'Created a order'})
+        end
     end
 
     def checkout
         @cart = current_user.cart
         @cart_items = @cart.cart_items
+
+        @order = current_user.orders.build
+
+        @cart_items.each do |cart_item|
+            @order.order_items.build(
+                product: cart_item.product,
+                quantity: cart_item.quantity,
+                price: cart_item.price
+            )
+        end
+
+        if @order.save
+            create_activity_log(:created_order, @order, details: { message: 'Order created '})
+        end
+    end
+
+    def destroy_all_items
+        @order = current_user.orders.build
+        @order.save
+
+        create_activity_log(:created_history, @order, details: { message: 'Order archived in user history'})
+
+        current_user.cart.cart_items.each do |cart_item|
+            @order.order_items.create(product: cart_item.product, quantity: cart_item.quantity, price: cart_item.price )
+        end
+
+        create_activity_log(:removed_all_items, current_user.cart, details: { message: 'Removing items from cart' })
+        current_user.cart.cart_items.destroy_all
+        redirect_to root_path, notice: 'Thank you for choosing our store'
     end
 
     private

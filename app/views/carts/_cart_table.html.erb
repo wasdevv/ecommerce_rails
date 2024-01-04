@@ -1,3 +1,5 @@
+<br>
+<br>
 <table class="table table-light table-bordered w-auto ms-4">
   <thead class="table-light">
     <tr>
@@ -20,3 +22,25 @@
     <% end %>
   </tbody>
 </table>
+
+<td class="align-middle text-center">
+  <div class="button-container">
+    <% total_order = 0 %>
+
+    <% @cart_items.each do |cart_item| %>
+      <% total_order += cart_item.quantity * cart_item.price %>
+    <% end %>
+
+    <div>
+      <span style="color: black;" class="align-middle text-center">
+        Total order: <%= number_to_currency(total_order) %>
+      </span>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <%= link_to "Confirmar Pedido", checkout_cart_path(current_user), class: "button1" %>
+    <%= link_to "Continuar Comprando", products_path, class: "button2" %>
+  </div>
+</td>

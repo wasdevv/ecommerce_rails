@@ -1,0 +1,25 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="text-center" >
+  <p>Pedido</p>
+</div>
+
+<table class="table table-light table-bordered w-auto ms-4">
+  <thead class="table-light">
+    <tr>
+      <th scope="col" class="text-center">Pedido</th>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
+      <tr>
+        <td class="align-middle text-center"><%= cart_item.product.name %></td>
+        <td class="align-middle text-center"><%= cart_item.quantity %></td>
+        <td class="align-middle text-center"><%= number_to_currency(cart_item.price) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to "Voltar à tela inicial", destroy_all_items_cart_path(current_user), method: :delete %>
