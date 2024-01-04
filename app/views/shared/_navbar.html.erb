@@ -1,7 +1,10 @@
     <% if user_signed_in? %>
       Welcome, <%= current_user.email %>
       <%= link_to "New Product", new_product_path %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }%>
+      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+      <% if current_user && current_user.admin? %>
+        <%= link_to "ADMIN LOG", activity_logs_path %>
+      <% end %>
     <% else %>
       <%= link_to "Register", new_user_session_path %>
     <% end %>

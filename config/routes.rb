@@ -8,6 +8,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :activity_logs, only: [:index] do
+    collection do
+      get 'search'
+    end
+  end
+  
   get '/about', to: 'home#about', as: :about
   # get :about, on: :collection
 

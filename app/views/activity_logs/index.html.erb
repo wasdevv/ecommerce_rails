@@ -1,0 +1,26 @@
+<div class="text-center">
+  <p>Admin LOG</p>
+</div>
+
+<table class="table w-auto" id="activity-logs-table">
+  <thead class="table-dark">
+    <tr>
+      <th scope="col" class="text-center">User</th>
+      <th scope="col" class="text-center">Action</th>
+      <th scope="col" class="text-center">Track</th>
+      <th scope="col" class="text-center">Details</th>
+      <th scope="col" class="text-center">Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @activity_logs.each do |activity_log| %>
+      <tr>
+        <td class="align-middle text-center"> <%= activity_log.user.email %> </td>
+        <td class="align-middle text-center"> <%= activity_log.action %> </td>
+        <td class="align-middle text-center"> <%= "#{activity_log.trackable_type} ##{activity_log.trackable_id}" %> </td>
+        <td class="align-middle text-center"> <%= activity_log.details.inspect %> </td>
+        <td class="align-middle text-center"> <%= activity_log.created_at.strftime('%Y-%m-%d %H:%M:%S') %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
