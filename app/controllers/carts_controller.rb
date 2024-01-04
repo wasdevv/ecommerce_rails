@@ -48,10 +48,6 @@ class CartsController < ApplicationController
         @cart_items = @cart.cart_items
     end
 
-    def history
-        @user = current_user
-    end
-
     private
 
     def create_activity_log(action, trackable, details: {})

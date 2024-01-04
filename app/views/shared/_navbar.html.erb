@@ -1,10 +1,69 @@
-    <% if user_signed_in? %>
-      Welcome, <%= current_user.email %>
-      <%= link_to "New Product", new_product_path %>
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
+  <nav class="navbar navbar-dark bg-dark  fixed-top">
+  <div class="container-fluid">
+    <div class="ml-auto">
+      <%= link_to "SHOP RUBY", root_path, class: "navbar-brand fs-3" %>
+      <%# <%= link_to "ABOUT PROJECT", about_home_path, class: "navbar-brand fs-6" %>
       <% if current_user && current_user.admin? %>
-        <%= link_to "ADMIN LOG", activity_logs_path %>
+        <%= link_to "ADMIN LOG", activity_logs_path, class: "navbar-brand fs-6 " %>
       <% end %>
-    <% else %>
-      <%= link_to "Register", new_user_session_path %>
-    <% end %>
+    </div>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">RUBY SHOP</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body" style="height: 50vh; overflow-y: auto;">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+        <% if user_signed_in? %>
+        Welcome, <%= current_user.email%>!
+
+          <% if current_user.cart.present? && current_user.cart.cart_items.any? %>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-cart-fill"></i>
+              </a>
+
+              <ul class="dropdown-menu dropdown-menu-dark">
+                <% current_user.cart.cart_items.each do |cart_item| %>
+                  <li class="dropdown-item">
+                    <%= "#{cart_item.product.name} - #{cart_item.quantity}" %>
+                  </li>
+                <% end %>
+
+                <li><hr class="dropdown-divider"></li>
+
+                <li class="dropdown-item">
+                  <%= link_to "Show Cart", cart_path(current_user.cart) %>
+                </li>
+              </ul>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <p class="nav-link">Empty Cart</p>
+            </li>
+          <% end %>
+
+          <li class="nav-item">
+            <%= link_to "Order History", history_home_path(current_user), class: "nav-link active" %>
+          </li>
+          
+          <li class="nav-item">
+            <%= link_to "Create Product", new_product_path, class: "nav-link active" %>
+          </li>
+
+          <li class="nav-item">
+            <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "nav-link active", aria: { current: "page" } %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Register/Login", new_user_session_path, class: "nav-link active" %>
+          </li>
+        </ul>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</nav>

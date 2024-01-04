@@ -20,8 +20,16 @@ Rails.application.routes.draw do
       match '/add_to_cart/product_id', action: :add_to_cart, via: [:get, :post], as: :add_to_cart # CartItem, Cart, and Product
     end
   end
-  get '/about', to: 'home#about', as: :about
-  # get :about, on: :collection
+  
+  resources :home, only: [] do
+    member do
+      get '/history', to: 'home#history', as: :history
+    end
+    
+    collection do
+      # get 'about', to: 'home#about', as: :about_home
+    end
+  end
 
   # Defines the root path route ("/")
   root "products#index"
