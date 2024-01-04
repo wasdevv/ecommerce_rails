@@ -48,6 +48,25 @@ class CartsController < ApplicationController
         @cart_items = @cart.cart_items
     end
 
+    def remove_product_from_cart
+        @cart = current_user.cart
+        @product = Product.find( product: @product_id )
+        if @cart_item
+            @cart_item.destroy_all
+            create_activity_log(:removed_from_cart, @cart_item, details: { message: 'Product has been removed from cart'})
+            if @cart.cart_items.empty?
+                redirect_to products_path
+            else
+                redirect_to cart_path(current_user.cart), notice: 'Your product has benn removed from your cart'
+            end
+        end
+    else
+        redirect_to @cart, notice: 'Not possible to remove your product, try again.'
+    end
+
+    def checkout
+    end
+
     private
 
     def create_activity_log(action, trackable, details: {})

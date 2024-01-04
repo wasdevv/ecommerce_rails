@@ -15,7 +15,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - [✓] - In-app protections to prevent SQL injections, using ActiveRecord.
 - [✓] - Associations configured to avoid future problems
 - [✓] - Project writing to be as compressed as possible at the end of the project, for maintenance/scaling purposes using Docker
-- [ ] - User Order History
+- [✓] - User Order History
 - [✓] - Implement management of Products, carts and orders created by users.
 - [✓] - Use Role 1 (Administrator) created in rails g devise User, as a way of administering the entire site.
 - [ ] - Addition of comments to the project, where only another user other than the member can comment.
@@ -27,6 +27,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - Rails - 7.1.1
 
 - gem 'devise', 4.9
+- gem 'faker'
 
 ## Future Additions
 
