@@ -65,6 +65,8 @@ class CartsController < ApplicationController
     end
 
     def checkout
+        @cart = current_user.cart
+        @cart_items = @cart.cart_items
     end
 
     private
