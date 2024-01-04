@@ -1,0 +1,6 @@
+<p>Details of <strong>Product </strong>ID: <%= @product.id %> </p>
+
+<%= @product.name%>
+<%= @product.quantity%>
+<%= number_to_currency(@product.price, unit: 'R$', separator: ',', delimiter: '.') %>
+<%= @product.description%>

@@ -2,12 +2,49 @@
     font-family: Poppins, sans-serif;
 }
 
-.product-details {
-    width: 200px;
-    padding: 20px;
+.product-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
     background-color: transparent;
-    border: 1px solid #e5e5e5;
-    border-radius: 5px;
+    max-width: 225px;
     float: left;
-    margin-right: 20px;
+    clear: none;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    margin-left: 30px;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.product-left {
+    float: left;
+    clear: left;
+}
+
+.product-name {
+    font-size: 18px;
+    color: #333;
+    text-decoration: none;
+}
+
+.product-name:hover {
+    text-decoration: underline;
+}
+
+.product-info {
+    font-size: 18px;
+    color: #666;
+}
+
+.product-description {
+    font-size: 16px;
+    color: #444
 }

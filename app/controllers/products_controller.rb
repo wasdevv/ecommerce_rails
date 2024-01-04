@@ -10,9 +10,15 @@ class ProductsController < ApplicationController
     def create
         @product = current_user.products.build(product_params)
         if @product.save
+            flash[:success] = "Product created!"
+            redirect_to products_path
+        else
+            render :new
+        end
     end
 
     def show
+        @product = Product.find(params[:id])
     end
 
     def edit

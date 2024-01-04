@@ -1,9 +1,10 @@
-<% @products.each do |product| %>
-
-<div class="product-details">
-  <h2>Name: <%= product.name%></h2>
-  <p>Quantity: <%= product.quantity%></p>
-  <p>Price: <%= number_to_currency(product.price)%></p>
-  <p>Description: <%= product.description%></p>
+<div class="product-container">
+  <% @products.each do |product| %>
+    <div class="product product-left">
+      <p class="product-name"><strong>Nome: <%= link_to product.name, product %> </strong></p>
+      <p class="product-info"><strong>Quantidade: <%= product.quantity %> </strong></p>
+      <p class="product-info"><strong>Preço: <%= number_to_currency(@product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
+      <p class="product-description"><strong>Descrição: <%= product.description %> </strong></p>
+    </div>
+  <% end %>
 </div>
-<% end %>
