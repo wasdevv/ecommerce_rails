@@ -41,6 +41,13 @@ class CartsController < ApplicationController
         return
     end
 
+    # render the _cart_table.html.erb
+    def show
+        @cart = current_user.cart || current_user.build_cart
+        @product = Product.find_by(id: params[:product_id])
+        @cart_items = @cart.cart_items
+    end
+
     private
 
     def create_activity_log(action, trackable, details: {})
