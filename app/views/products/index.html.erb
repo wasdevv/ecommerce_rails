@@ -5,6 +5,15 @@
       <p class="product-info"><strong>Quantidade: <%= product.quantity %> </strong></p>
       <p class="product-info"><strong>Preço: <%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
       <p class="product-description"><strong>Descrição: <%= product.description %> </strong></p>
+      <% if user_signed_in? %>
+        <%= form_with(model: [product, product.comments.build], url: product_comments_path(product)) do |form| %>
+          <div class="field">
+            <%= form.label :content, 'Adicionar Comentário:' %>
+            <%= form.text_area :content, rows: 3, style: 'resize: none;' %>
+          </div>
+          <%= form.submit 'Adicionar Comentário' %>
+        <% end %>
+      <% end %>
     </div>
   <% end %>
 </div>

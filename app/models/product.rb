@@ -3,6 +3,7 @@ class Product < ApplicationRecord
 
     has_many :cart_items
     has_many :carts, through: :cart_items
+    has_many :comments
 
     validates :name, presence: true
     validates :quantity, numericality: { only_integer: true}

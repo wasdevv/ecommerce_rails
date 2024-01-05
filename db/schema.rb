@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_04_144740) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_04_175210) do
   create_table "activity_logs", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "trackable_type", null: false
@@ -39,6 +39,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_144740) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.integer "user_id", null: false
+    t.integer "product_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_comments_on_product_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -87,6 +97,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_04_144740) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "comments", "products"
+  add_foreign_key "comments", "users"
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "orders", "users"

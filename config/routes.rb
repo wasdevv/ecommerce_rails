@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     member do
       delete '/destroy', to: 'products#destroy', as: :destroy
     end
+
+    resources :comments, only: [:create, :destroy]
   end
 
   resources :activity_logs, only: [:index] do
