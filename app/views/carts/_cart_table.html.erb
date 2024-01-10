@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     <% @cart_items.each do |cart_item| %>
-      <tr>
+      <tr id="cart-item-<%= cart_item.id %>">
         <td class="align-middle text-center"><%= cart_item.product.name %></td>
         <td class="align-middle text-center"><%= cart_item.quantity %></td>
         <td class="align-middle text-center"><%= number_to_currency(cart_item.price) %></td>
@@ -31,7 +31,7 @@
       <% total_order += cart_item.quantity * cart_item.price %>
     <% end %>
 
-    <div>
+    <div id="total-order">
       <span style="color: black;" class="align-middle text-center">
         Total order: <%= number_to_currency(total_order) %>
       </span>

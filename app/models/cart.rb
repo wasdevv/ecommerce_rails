@@ -6,4 +6,8 @@ class Cart < ApplicationRecord
   has_many :order_tiems, through: :order
   
   has_many :activity_logs, as: :trackable, dependent: :destroy
+
+  def broadcast_update(user_id)
+    ActionCable.server.broadcast("cart_channel_#{user_id}", { action: 'update_cart' })
+  end
 end

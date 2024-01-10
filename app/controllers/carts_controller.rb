@@ -33,27 +33,32 @@ class CartsController < ApplicationController
             cart_item.quantity ||= 1
             cart_item.assign_attributes(price: @product.price)
             cart_item.save!
-
+            
+            
+            @cart.broadcast_update(current_user.id)
             create_activity_log(:added_to_cart, cart_item, details: { message: 'Product added to cart' })
         end
-
+        
         redirect_to cart_path, notice: 'Product added to your cart.'
         return
     end
-
+    
     # render the _cart_table.html.erb
     def show
         @cart = current_user.cart || current_user.build_cart
         @product = Product.find_by(id: params[:product_id])
         @cart_items = @cart.cart_items
     end
-
+    
     def remove_product_from_cart
         @cart = current_user.cart
-        @product = Product.find( product: @product_id )
+        @product = Product.find_by(id: params[:product_id])
+        @cart_item = @cart.cart_items.find_by(product: @product)
+        
         if @cart_item
-            @cart_item.destroy_all
+            @cart_item.destroy
             create_activity_log(:removed_from_cart, @cart_item, details: { message: 'Product has been removed from cart'})
+            @cart.broadcast_update(current_user.id)
             if @cart.cart_items.empty?
                 redirect_to products_path
             else
