@@ -1,2 +1,3 @@
 // Import all the channels to be used by Action Cable
 import "channels/cart_channel"
+// import "channels/product_channel"
