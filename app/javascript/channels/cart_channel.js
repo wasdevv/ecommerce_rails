@@ -6,14 +6,17 @@ consumer.subscriptions.create({ channel: "CartChannel" }, {
   },
 
   disconnected() {
-    // if disconnected
+    // if disconnect
   },
 
   received(data) {
     console.log("Received", data);
 
-    if (data.action === 'update_tart') {
+    if (data.action === 'update_cart') {
+      console.log(`Cart ID: ${data.cart.id}, Number of Products: ${data.cart.cart_items.length}`);
       TurboStreams.append("cart", { partial: "cart/cart", locals: { cart: data.cart } });
+    } else if (data.action === 'product_removed') {
+      console.log(`Product removed from cart - Product ID: ${data.product_id}`);
     }
   }
 });
