@@ -2,6 +2,14 @@
     font-family: Poppins, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+.text-custom-add {
+    color: #1e1e1e
+}
+
 /* product.index */
 .product-container {
     display: flex;
@@ -220,3 +228,5 @@
 .floating-box p {
     margin: 0px;
 }
+
+/* _cart_table.html.erb */

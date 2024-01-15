@@ -17,12 +17,16 @@ Rails.application.routes.draw do
     end
   end
 
+
   resources :carts do
     member do
+      # actions new, add product, remove product, and update quantity
       get '/new_cart', to: 'carts#new', as: :new_cart # Cart
       match '/add_to_cart/product_id', action: :add_to_cart, via: [:get, :post], as: :add_to_cart # CartItem, Cart, and Product
       match '/remove_product_from_cart/:product_id', action: :remove_product_from_cart, via: [:get, :delete], as: :remove_product_from_cart
-      
+      match 'update_quantity/:product_id', action: :update_quantity, via: [:get, :patch], as: :update_quantity
+
+      # checkout and make emtpy again cart of user.
       get '/checkout', to: 'carts#checkout', as: :checkout # CartItem
       match 'destroy_all_items', via: [:get, :post]
     end

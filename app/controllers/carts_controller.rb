@@ -42,7 +42,20 @@ class CartsController < ApplicationController
         redirect_to cart_path, notice: 'Product added to your cart.'
         return
     end
-    
+
+    def update_quantity
+        @cart = current_user.cart
+        @product = Product.find(params[:product_id])
+        @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
+        new_quantity = @cart_item.quantity + 1
+      
+        if @cart_item.update(quantity: new_quantity)
+            redirect_to cart_path(@cart), notice: 'Quantidade do carrinho atualizada com sucesso.'
+        else
+            redirect_to cart_path(@cart), alert: 'Erro ao atualizar a quantidade do carrinho.'
+        end
+    end
+
     # render the _cart_table.html.erb
     def show
         @cart = current_user.cart || current_user.build_cart
