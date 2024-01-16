@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
+  # action cable
+  mount ActionCable.server => '/cable'
 
   resources :products do
     member do
@@ -23,6 +25,7 @@ Rails.application.routes.draw do
       match '/add_to_cart/product_id', action: :add_to_cart, via: [:get, :post], as: :add_to_cart # CartItem, Cart, and Product
       match '/remove_product_from_cart/:product_id', action: :remove_product_from_cart, via: [:get, :delete], as: :remove_product_from_cart
       
+      # checkout and make empty again cart of user BEFORE completed the order.
       get '/checkout', to: 'carts#checkout', as: :checkout # CartItem
       match 'destroy_all_items', via: [:get, :post]
     end
