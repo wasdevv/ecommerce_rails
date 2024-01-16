@@ -55,6 +55,11 @@ class CartsController < ApplicationController
         if @cart_item
             @cart_item.destroy_all
             create_activity_log(:removed_from_cart, @cart_item, details: { message: 'Product has been removed from cart'})
+            
+            # action cable
+            ActionCable.server.broadcast("cart_channel_#{current_user.id}", { action: 'product_removed', product_id: @product.id })
+            Rails.logger.info("Broadcasted product_removed to CartChannel")
+            
             if @cart.cart_items.empty?
                 redirect_to products_path
             else
