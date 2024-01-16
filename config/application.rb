@@ -16,6 +16,24 @@ module EcommerceRails
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    ActiveSuport.on_load(:before_initialize) do |app|
+      app.config.middleware.insert_before(::Rack::Sendfile, ::EcommerceRails::AssumeSSL)
+    end
+
+    class EcommerceRails::AssumeSSL
+      def initialize(app)
+        @app = app
+      end
+
+      def call(env)
+        env["HTTPS"] = "on"
+        env["HTTP_X_FORWARDED_PORT"] = 443
+        env["HTTP_X_FORWARDED_PROTO"] = "https"
+        env["rack-url_scheme"] = "https"
+
+        @app.call(env)
+      end
+    end
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

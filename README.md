@@ -18,7 +18,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - [✓] - User Order History
 - [✓] - Implement management of Products, carts and orders created by users.
 - [✓] - Use Role 1 (Administrator) created in rails g devise User, as a way of administering the entire site.
-- [ ] - Addition of comments to the project, where only another user other than the member can comment.
+- [✓] - Addition of comments to the project, where only another user other than the member can comment.
 - [ ] - Notification bootstrap icon to show user's current/or past notifications with expiration up to 30d.
 
 ## Project dependencies
@@ -31,9 +31,9 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 
 ## Future Additions
 
+- [✓] - Add Cookies for more protection
 - [ ] - Implementer addon (search 1 email and render all logs in index.html.erb)
 - [ ] - Scale using Docker
 - [ ] - Contingency and recovery plan, for unpredictable attack events
-- [ ] -
-- [ ] -
-- [ ] -
+- [ ] - Add Cryptograph SSL for more protection
+- [ ] - 

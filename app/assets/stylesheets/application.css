@@ -13,6 +13,11 @@ a {
 .text-custom-add1 {
     color: #979797
 }
+
+.custom-margin-left {
+    margin-left: 20px;
+}
+
 /* product.index */
 .product-container {
     display: flex;

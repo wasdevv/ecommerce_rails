@@ -1,50 +1,47 @@
 <br>
 <br>
-<table class="table table-light table-bordered w-auto ms-4">
-  <thead class="table-light">
-    <tr>
-      <th scope="col" class="text-center">Product</th>
-      <th scope="col" class="text-center">Quantity</th>
-      <th scope="col" class="text-center">Unit Price</th>
-      <%# <th scope="col" class="text-center">ID da compra EM BREVE</th> %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
+<table class="table table-borderless w-auto ms-4">
+  <caption>Want to buy more? <%= link_to "Buy More", products_path %></caption>
+  <% total_order = 0 %>
+
+  <% @cart_items.each do |cart_item| %>
+    <% total_order += cart_item.quantity * cart_item.price %>
+  <% end %>
+
+  <caption>Total Order: <%= number_to_currency(total_order)%></caption>
+  <caption><%= link_to "Confirmar Pedido", checkout_cart_path(current_user)%></caption>
+    <thead class="table-light">
       <tr>
-        <td class="align-middle text-center"><%= cart_item.product.name %></td>
-        <td class="align-middle text-center">
-        <%= link_to "<", downgrade_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add1" %>
-        <%= cart_item.quantity %>
-        <%= link_to ">", update_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add" %>
-        </td>
-        <td class="align-middle text-center"><%= number_to_currency(cart_item.price) %></td>
-        <td class="align-middle text-center">
-          <%= link_to "Remove", remove_product_from_cart_cart_path(product_id: cart_item.product.id ), class: "remove-button-custom"%>
-        </td>
+        <th scope="col" class="text-center">Product</th>
+        <th scope="col" class="text-center">Quantity</th>
+        <th scope="col" class="text-center">Unit Price</th>
+      <%# <th scope="col" class="text-center">ID da compra EM BREVE</th> %>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @cart_items.each do |cart_item| %>
+        <tr>
+          <td class="align-middle text-center"><%= cart_item.product.name %></td>
+          <td class="align-middle text-center">
+            <%= link_to "<", downgrade_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add1" %>
+            <%= cart_item.quantity %>
+            <%= link_to ">", update_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add" %>
+          </td>
+          <td class="align-middle text-center"><%= number_to_currency(cart_item.price) %></td>
+          <td class="align-middle text-center">
+            <%= link_to "Remove", remove_product_from_cart_cart_path(product_id: cart_item.product.id ), class: "remove-button-custom"%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
 </table>
-
-<td class="align-middle text-center">
-  <div class="button-container">
-    <% total_order = 0 %>
-
-    <% @cart_items.each do |cart_item| %>
-      <% total_order += cart_item.quantity * cart_item.price %>
-    <% end %>
-
-    <div>
-      <span style="color: black;" class="align-middle text-center">
-        Total order: <%= number_to_currency(total_order) %>
-      </span>
-    </div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <%= link_to "Confirmar Pedido", checkout_cart_path(current_user), class: "button1" %>
-    <%= link_to "Continuar Comprando", products_path, class: "button2" %>
+<br>
+<div class="card custom-margin-left" style="width: 28rem;">
+  <div class="card-body">
+    <h5 class="card-title"><strong>Informações e Garantias</strong></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Ecommerce Shop Ruby</h6>
+    <p class="card-text">Entrega feita por: <strong>Ruby Shop</strong>!</p>
+    <a href="https://localhost:3000" class="card-link">Aumentar Garantia</a>
+    <a href="https://localhost:3000" class="card-link">Garantia de Anti-Roubo</a>
   </div>
-</td>
+</div>
