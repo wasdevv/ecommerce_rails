@@ -11,7 +11,7 @@
     <br>
     <p class="text-black"><%= @product.description %></p>
     <div class="info-product-container">
-      <p class="text-start fs-6 text-black">Product by: <strong><%= current_user.email %></strong></p>
+      <p class="text-start fs-6 text-black">Product by: <strong><%= @product.user.email %></strong></p>
       <p class="text-start fs-2 text-dark"><strong><%= number_to_currency(@product.price, unit: 'R$', separator: ',', delimiter: '.') %></p>
       <p class="text-start fs-5 text-dark">Adittions <strong>Coming Soon!</strong></p>
       <br>

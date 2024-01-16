@@ -2,6 +2,17 @@
     font-family: Poppins, sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
+.text-custom-add {
+    color: #202020
+}
+
+.text-custom-add1 {
+    color: #979797
+}
 /* product.index */
 .product-container {
     display: flex;

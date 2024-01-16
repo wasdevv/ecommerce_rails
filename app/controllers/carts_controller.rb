@@ -47,6 +47,42 @@ class CartsController < ApplicationController
         @product = Product.find(params[:product_id])
         @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
         new_quantity = @cart_item.quantity + 1
+
+        if @cart_item && @cart_item.quantity > 1
+            new_quantity = @cart_item.quantity - 1
+            
+            if @cart_item.update(quantity: new_quantity)
+                redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+            else
+                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+            end
+        elsif @cart_item && @cart_item.quantity == 1
+            if @cart_item.destroy
+                redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+            else
+                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+            end
+        else
+            puts "Cart item not found or quantity not set."
+            redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+        end
+    end
+
+    def downgrade_quantity
+        @cart = current_user.cart
+        @product = Product.find(params[:product_id])
+        @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
+        
+        if @cart_item && @cart_item.quantity > 1
+            new_quantity = @cart_item.quantity - 1
+            @cart_item.update(quantity: new_quantity)
+        elsif @cart_item && @cart_item.quantity == 1
+            @cart_item.destroy
+        else
+            puts "Cart item not found or quantity not set."
+        end
+          
+        redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
     end
 
     # render the _cart_table.html.erb
@@ -54,13 +90,19 @@ class CartsController < ApplicationController
         @cart = current_user.cart || current_user.build_cart
         @product = Product.find_by(id: params[:product_id])
         @cart_items = @cart.cart_items
+
+        if @cart.cart_items.empty?
+            redirect_to root_path
+        end
     end
 
     def remove_product_from_cart
         @cart = current_user.cart
-        @product = Product.find( product: @product_id )
+        @product = Product.find_by(id: params[:product_id])
+        @cart_item = @cart.cart_items.find_by(product: @product)
+
         if @cart_item
-            @cart_item.destroy_all
+            @cart_item.destroy
             create_activity_log(:removed_from_cart, @cart_item, details: { message: 'Product has been removed from cart'})
             
             # action cable
