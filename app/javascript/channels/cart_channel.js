@@ -11,8 +11,9 @@ consumer.subscriptions.create("CartChannel", {
   },
 
   received(data) {
-    console.log("Received data:", data);
-    
     // Called when there's incoming data on the websocket for this channel
+    console.log("Received data:", data);
+
+    if (data.action === 'update_cart')
   }
 });

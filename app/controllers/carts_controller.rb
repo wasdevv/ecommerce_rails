@@ -34,6 +34,7 @@ class CartsController < ApplicationController
             cart_item.assign_attributes(price: @product.price)
             cart_item.save!
 
+            ActionCable.server.broadcast("cart_channel_#{current_user.id}", { action: 'update_cart', cart: @cart })
             create_activity_log(:added_to_cart, cart_item, details: { message: 'Product added to cart' })
         end
 
