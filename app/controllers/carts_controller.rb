@@ -47,24 +47,11 @@ class CartsController < ApplicationController
         @product = Product.find(params[:product_id])
         @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
         new_quantity = @cart_item.quantity + 1
-
-        if @cart_item && @cart_item.quantity > 1
-            new_quantity = @cart_item.quantity - 1
-            
-            if @cart_item.update(quantity: new_quantity)
-                redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
-            else
-                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
-            end
-        elsif @cart_item && @cart_item.quantity == 1
-            if @cart_item.destroy
-                redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
-            else
-                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
-            end
+      
+        if @cart_item.update(quantity: new_quantity)
+            redirect_to cart_path(@cart), notice: 'Quantidade do carrinho atualizada com sucesso.'
         else
-            puts "Cart item not found or quantity not set."
-            redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+            redirect_to cart_path(@cart), alert: 'Erro ao atualizar a quantidade do carrinho.'
         end
     end
 
@@ -72,17 +59,30 @@ class CartsController < ApplicationController
         @cart = current_user.cart
         @product = Product.find(params[:product_id])
         @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
-        
+
         if @cart_item && @cart_item.quantity > 1
             new_quantity = @cart_item.quantity - 1
-            @cart_item.update(quantity: new_quantity)
-        elsif @cart_item && @cart_item.quantity == 1
-            @cart_item.destroy
-        else
-            puts "Cart item not found or quantity not set."
+            puts "Old Quantity: #{@cart_item.quantity}, New Quantity: #{new_quantity}"
+            
+            if @cart_item && @cart_item.quantity > 1
+                new_quantity = @cart_item.quantity - 1
+            
+                if @cart_item.update(quantity: new_quantity)
+                    redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+                else
+                    redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+                end
+            elsif @cart_item && @cart_item.quantity == 1
+                if @cart_item.destroy
+                    redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+                else
+                    redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+                end
+            else
+                puts "Cart item not found or quantity not set."
+                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+            end
         end
-          
-        redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
     end
 
     # render the _cart_table.html.erb

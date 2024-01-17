@@ -7,11 +7,11 @@ a {
 }
 
 .text-custom-add {
-    color: #202020
+    color: #1e1e1e
 }
 
 .text-custom-add1 {
-    color: #979797
+    color: #ff1c1c
 }
 
 .custom-margin-left {
@@ -20,6 +20,15 @@ a {
 
 .custom-margin-left-2 {
     margin-left: 30px;
+}
+
+.politics {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 /* product.index */
