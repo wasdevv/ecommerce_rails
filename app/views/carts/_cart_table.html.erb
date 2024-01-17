@@ -9,7 +9,6 @@
   <% end %>
 
   <caption>Total Order: <%= number_to_currency(total_order)%></caption>
-  <caption><%= link_to "Confirmar Pedido", checkout_cart_path(current_user)%></caption>
     <thead class="table-light">
       <tr>
         <th scope="col" class="text-center">Product</th>
@@ -36,12 +35,13 @@
     </tbody>
 </table>
 <br>
-<div class="card custom-margin-left" style="width: 28rem;">
+<div class="card custom-margin-left" style="width: 35rem;">
   <div class="card-body">
     <h5 class="card-title"><strong>Informações e Garantias</strong></h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">Ecommerce Shop Ruby</h6>
     <p class="card-text">Entrega feita por: <strong>Ruby Shop</strong>!</p>
     <a href="https://localhost:3000" class="card-link">Aumentar Garantia</a>
     <a href="https://localhost:3000" class="card-link">Garantia de Anti-Roubo</a>
+    <%= link_to "Confirmar Pedido", checkout_cart_path(current_user), class: "card-link"%>
   </div>
 </div>

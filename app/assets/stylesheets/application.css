@@ -18,6 +18,10 @@ a {
     margin-left: 20px;
 }
 
+.custom-margin-left-2 {
+    margin-left: 30px;
+}
+
 /* product.index */
 .product-container {
     display: flex;
