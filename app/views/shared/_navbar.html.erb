@@ -2,11 +2,12 @@
   <div class="container-fluid">
     <div class="ml-auto">
       <%= link_to "SHOP RUBY", root_path, class: "navbar-brand fs-3" %>
-      <%# <%= link_to "ABOUT PROJECT", about_home_path, class: "navbar-brand fs-6" %>
+      <%= link_to "ABOUT PROJECT", '/home/about', class: "navbar-brand fs-6" %>
       <% if current_user && current_user.admin? %>
         <%= link_to "ADMIN LOG", activity_logs_path, class: "navbar-brand fs-6 " %>
       <% end %>
     </div>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

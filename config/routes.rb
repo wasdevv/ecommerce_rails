@@ -41,7 +41,7 @@ Rails.application.routes.draw do
     end
     
     collection do
-      # get 'about', to: 'home#about', as: :about_home
+      get 'about'
     end
   end
 

@@ -12,25 +12,24 @@
   </div>
 </div>
 
-<div class="product-container">
-  <% @products.each do |product| %>
-    <div class="product product-left">
-      <p class="product-name"><strong>Nome: <%= link_to product.name, product %> </strong></p>
-      <p class="product-info"><strong>Quantidade: <%= product.quantity %> </strong></p>
-      <p class="product-info"><strong>Preço: <%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
-      <p class="product-description"><strong>Descrição: <%= product.description %> </strong></p>
+</div><div class="product-container">
+ <% @products.each do |product| %>
+    <div class="product product-left" id="product-<%= product.id %>" onclick="window.location.href='<%= product_path(product) %>';">
+      <p class="product-name fs-5"><strong><%= product.name %> </strong></p>
+      <p class="product-info"><strong>Price: <%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
+      <p class="product-description"><strong>Description: <%= product.description %> </strong></p>
       <% if user_signed_in? %>
         <%= form_with(model: [product, product.comments.build], url: product_comments_path(product)) do |form| %>
           <div class="field">
-            <%= form.label :content, 'Adicionar Comentário:' %>
-            <%= form.text_area :content, rows: 3, style: 'resize: none;' %>
+            <%= form.label :content, 'Add your commentary:' %>
+            <%= form.text_area :content, rows: 2, style: 'resize: none;' %>
           </div>
-          <%= form.submit 'Adicionar Comentário' %>
+          <%= form.submit 'Add your commentary' %>
         <% end %>
       <% end %>
     </div>
-  <% end %>
+ <% end %>
 </div>
 <div class="politics">
-  Politicas de Privacidades
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀Politicas de Privacidades
 </div>
