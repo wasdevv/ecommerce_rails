@@ -34,7 +34,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 
 - [✓] - Add Cookies for more protection
 - [✓] - Add Cryptograph SSL for more protection
-- [ ] - Contingency and recovery plan, for unpredictable attack events using lib/tasks
+- [✓] - Contingency and recovery plan, for unpredictable attack events using lib/tasks
 - [ ] - Implementer addon (search 1 email and render all logs in index.html.erb)
 - [ ] - Scale using Docker
 - [ ] - 
