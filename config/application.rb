@@ -16,6 +16,9 @@ module EcommerceRails
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w(assets tasks))
 
+    # action cable config
+    config.middleware.use ActionCable.server, mount_path: '/cable'
+    
     # ActiveSupport.on_load(:before_initialize) do |app|
     #   app.config.middleware.insert_before(::Rack::Sendfile, ::EcommerceRails::AssumeSSL)
     # end
