@@ -1,12 +1,50 @@
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-  <p class="text-start mr-4 fw-bold fs-2">Somos um Ecommerce para alavancar sua loja física</p>
-  <br>
-  <p class="text-start mr-4 fs-4">Projeto simples de um ecommerce multi-usuário.</p>
-  <p class="text-start mr-4 fs-6">Usando Bootstrap 5.3X, JS, e a gem devise</p>
+<section class="home">
+  <div class="home-text">
+    <h4>Ecommerce with Rails 7</h4>
+    <h1>For real users.</h1>
+    <a href="#products" class="btn">Explore Now</a>
+  </div>
+
+  <div class="home-img">
+    <img src="https://i.imgur.com/LcXzAu7.png">
+  </div>
+</section>
+<%# section feature %>
+<section class="feature">
+  <div class="middle-text">
+    <h2>More features, have examples above, discover.</h2>
+    <h3>Info-products, clothes, and everything else at <strong>Ruby Shop</strong></h3>
+  </div>
+
+  <div class="feature-content">
+    <div class="row">
+      <div class="main-row">
+        <div class="row-text">
+          <h6>Explore the Products</h6>
+          <a href="#" class="row-btn">Show me all</a>
+          <div class="row-img">
+            <img src="https://i.imgur.com/J6a1zwh.png">
+            <img src="https://i.imgur.com/qOMFZ0B.png">
+            <img src="https://i.imgur.com/nIKKbna.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="product">
+  <div class="middle-text">
+    <h2>New Arrivals.<strong>BEST sellers of the month!</strong></h2>
+  </div>
+
+  <div class="product-container">
+    <% @products.each do |product| %>
+      <div class="product product-left" id="product-<%= product.id %>" onclick="window.location.href='<%= product_path(product) %>';">
+        <p class="product-name fs-5"><strong><%= product.name %> </strong></p>
+        <p class="product-info"><strong>Price: <%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
+        <p class="product-description"><strong>Description: <%= product.description %> </strong></p>
+      </div>
+    <% end %>
+  </div>
+</section>

@@ -1,5 +1,8 @@
+<br>
+<br>
+<br>
 <div class="text-center">
-  <h3>Ecommerce feito em <strong>Ruby on Rails 7.1</strong></h3>
+  <h2>Ecommerce feito em <strong>Ruby on Rails 7.1</strong></h2>
 </div>
 <br>
 <div class="card custom-margin-left" style="width: 28rem;">
@@ -18,15 +21,6 @@
       <p class="product-name fs-5"><strong><%= product.name %> </strong></p>
       <p class="product-info"><strong>Price: <%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %> </strong></p>
       <p class="product-description"><strong>Description: <%= product.description %> </strong></p>
-      <% if user_signed_in? %>
-        <%= form_with(model: [product, product.comments.build], url: product_comments_path(product)) do |form| %>
-          <div class="field">
-            <%= form.label :content, 'Add your commentary:' %>
-            <%= form.text_area :content, rows: 2, style: 'resize: none;' %>
-          </div>
-          <%= form.submit 'Add your commentary' %>
-        <% end %>
-      <% end %>
     </div>
  <% end %>
 </div>

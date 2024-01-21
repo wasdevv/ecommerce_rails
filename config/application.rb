@@ -17,7 +17,7 @@ module EcommerceRails
     config.autoload_lib(ignore: %w(assets tasks))
 
     # action cable config
-    config.middleware.use ActionCable.server, mount_path: '/cable'
+    # config.middleware.use ActionCable.server, mount_path: '/cable'
     
     # ActiveSupport.on_load(:before_initialize) do |app|
     #   app.config.middleware.insert_before(::Rack::Sendfile, ::EcommerceRails::AssumeSSL)

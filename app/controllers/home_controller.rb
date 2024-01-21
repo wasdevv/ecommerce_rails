@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
 
     def about
+        @products = Product.all
     end
 
     def history
