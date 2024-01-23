@@ -20,28 +20,12 @@
   </head>
 
   <body>
-    <header>
-      <a href="#" class="logo"><img src="https://i.imgur.com/e75G7zQ.png"></a>
-
-      <ul class="navbar">
-        <li><a href="#" class="active">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Shop</a></li>
-        <li><a href="#">Pages</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-
-      <div class="icons">
-        <a href="#"><i class="bi bi-search"></i></a>
-        <a href="#"><i class="bi bi-person"></i></a>
-        <a href="#"><i class="bi bi-cart"></i></a>
-        <div class="bi bi-list" id="menu-icon"></div>
-      </div>
-    </header>
+    <%= render 'shared/navbar' %>
+  </header>
     <%# custom js link %>
-    <script type="text-javascript" src="js/script.js"></script>
-    
+    <script src="script.js"></script>
+    <script src="application.js"></script>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
     <%= yield %>

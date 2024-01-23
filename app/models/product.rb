@@ -11,4 +11,7 @@ class Product < ApplicationRecord
     validates :description, presence: true
 
     has_many :activity_logs, as: :trackable, dependent: :destroy
+
+    # active storage image
+    has_one_attached :image
 end

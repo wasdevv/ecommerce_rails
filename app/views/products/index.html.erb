@@ -15,7 +15,7 @@
   </div>
 </div>
 
-</div><div class="product-container">
+<div class="product-container">
  <% @products.each do |product| %>
     <div class="product product-left" id="product-<%= product.id %>" onclick="window.location.href='<%= product_path(product) %>';">
       <p class="product-name fs-5"><strong><%= product.name %> </strong></p>

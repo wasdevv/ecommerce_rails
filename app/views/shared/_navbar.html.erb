@@ -1,0 +1,24 @@
+<header>
+    <a href="#" class="logo"><img src="https://i.imgur.com/e75G7zQ.png"></a>
+
+    <ul class="navbar">
+        <li><a href="<%= root_path %>" class="active">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Your Products</a></li>
+        <% if current_user.admin? %>
+        <li><a href="<%= activity_logs_path %>" class="active">Admin Log</a></li>
+        <% end %>
+    </ul>
+
+    <div class="icons">
+      <a href="#" id="search-icon"><%= content_tag(:i, '', class: 'bi bi-search') %></a>
+      <div id="search-box" class="hidden">
+        <!-- Conteúdo da box de pesquisa aqui -->
+        <%= text_field_tag 'search', nil, placeholder: 'Digite sua pesquisa' %>
+        <%= button_tag 'Buscar', type: 'button' %>
+      </div>
+      <a href="#"><i class="bi bi-person"></i></a>
+      <a href="#"><i class="bi bi-cart"></i></a>
+      <div class="bi bi-list" id="menu-icon"></div>
+    </div>
+</header>
