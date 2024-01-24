@@ -35,7 +35,7 @@
 
 <section id="product" class="product">
   <div class="middle-text">
-    <h2>New Arrivals.<strong> BEST sellers of the month.</strong></h2>
+    <h2>Available<strong> products.</strong></h2>
   </div>
 
 <% @products.each do |product| %>
@@ -49,11 +49,15 @@
             <%= image_tag("https://i.imgur.com/jl1rTQL.png", width: 100, height: 100) %>
           <% end %>
         </div>
+        <h3>Owner: <%= product.user.email %></h3>
         <h3><%= product.name %></h3>
         <h4><%= product.description %></h4>
         <div class="inbox">
           <div>
             <a href="#" class="price"><%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %></a>
+            <% if @product && current_user == @product.user %>
+              <%= link_to edit_product_path, class: "edit" if current_user == @product.user %>
+            <% end %>
           </div>
           <div class="rating">
             <!-- Adicione a lógica de exibição das estrelas de acordo com a avaliação do produto -->

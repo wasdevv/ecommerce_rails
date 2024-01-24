@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   resources :home, only: [] do
     member do
       get '/history', to: 'home#history', as: :history
+      get '/user/', to: 'home#user', as: :user
     end
     
     collection do

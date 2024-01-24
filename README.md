@@ -9,7 +9,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 ## Main project settings
 
 - [✓] - A nav-bar with all the actions that an e-commerce has (or almost all), including: links_to with create Product, remove cart, see the current cart, go to the home screen, etc.
-- [✓] - Products in floating-box on the home screen (index.html.erb) with a root to:, showing what the product has (quantity, price, name, and description.)
+- [✓] - Products in floating-box on the home screen (root_path)
 - [✓] - Use Bootstrap 5, some icons, and use CSS to customize the front a little so it doesn't look like a pigsty, lol.
 - [✓] - Make sure that only those who are going to make a cart, and go to checkout_confirmation, will only be LOGED users, if not, they will be required to register/log in with the DEVISE system.
 - [✓] - In-app protections to prevent SQL injections, using ActiveRecord.
@@ -37,4 +37,5 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - [✓] - Contingency and recovery plan, for unpredictable attack events using lib/tasks
 - [ ] - Implementer addon (search 1 email and render all logs in index.html.erb)
 - [ ] - Scale using Docker
+- [ ] - 
 - [ ] - 

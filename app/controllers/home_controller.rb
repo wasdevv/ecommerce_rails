@@ -4,6 +4,10 @@ class HomeController < ApplicationController
         @products = Product.all
     end
 
+    def user
+        @user = current_user
+    end
+
     def history
         @user = current_user
         @orders = @user.orders

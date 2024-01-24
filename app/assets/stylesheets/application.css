@@ -297,6 +297,22 @@ header.sticky {
     letter-spacing: 1px;
 }
 
+.edit {
+    display: inline-block;
+    padding: 4px 16px;
+    background: transparent;
+    border: 2px solid #334155;
+    color: #334155;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all .45s ease;
+}
+
+.edit:hover {
+    letter-spacing: 1px;
+}
+
 .rating a {
     font-size: 19px;
     color: #ef4444;
