@@ -22,9 +22,9 @@
         <tr>
           <td class="align-middle text-center"><%= cart_item.product.name %></td>
           <td class="align-middle text-center">
-            <%= link_to "‹", downgrade_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add1" %>
+            <%= link_to "‹", downgrade_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add1" %> 
             <%= cart_item.quantity %>
-            <%= link_to "›", update_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add" %>
+            <%= link_to "›", update_quantity_cart_path(@cart, product_id: cart_item.product.id), method: :patch, class: "text-custom-add", id: "update-link" %> 
           </td>
           <td class="align-middle text-center"><%= number_to_currency(cart_item.price) %></td>
           <td class="align-middle text-center">
@@ -37,11 +37,11 @@
 <br>
 <div class="card custom-margin-left" style="width: 35rem;">
   <div class="card-body">
-    <h5 class="card-title"><strong>Informações e Garantias</strong></h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">Ecommerce Shop Ruby</h6>
-    <p class="card-text">Entrega feita por: <strong>Ruby Shop</strong>!</p>
-    <a href="https://localhost:3000" class="card-link">Aumentar Garantia</a>
-    <a href="https://localhost:3000" class="card-link">Garantia de Anti-Roubo</a>
-    <%= link_to "Confirmar Pedido", checkout_cart_path(current_user), class: "card-link"%>
+    <h5 class="card-title"><strong>Information and Guarantees</strong></h5>
+    <h6 class="card-subtitle mb-2 text-body-secondary">Ruby Shop</h6>
+    <p class="card-text">Delivery made by: <strong>Ruby Shop</strong>!</p>
+    <a href="https://localhost:3000" class="card-link">Increase Warranty</a>
+    <a href="https://localhost:3000" class="card-link">Anti-Theft Guarantee</a>
+    <%= link_to "Confirm Order", checkout_cart_path(current_user), class: "card-link"%>
   </div>
 </div>

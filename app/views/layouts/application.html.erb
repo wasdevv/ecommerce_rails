@@ -16,13 +16,20 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
+    <%# action cable fix i think %>
+    <%= action_cable_meta_tag %>
+    
     <%= favicon_link_tag 'https://i.imgur.com/xnrz0pT.png' %>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+    <meta name="csrf-token" content="<%= form_authenticity_token %>" />
   </head>
 
   <body>
     <%= render 'shared/navbar' %>
     <%# custom js link %>
-    <script type="text/javascript" src="script.js"></script>
     
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

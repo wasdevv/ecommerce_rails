@@ -44,20 +44,21 @@ class CartsController < ApplicationController
 
     def update_quantity
         @cart = current_user.cart
-        @product = Product.find(params[:product_id])
+        @product = Product.find_by(id: params[:product_id])
         @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
         new_quantity = @cart_item.quantity + 1
-      
+
+        ActionCable.server.broadcast("cart_channel_#{current_user.id}", { action: 'update_cart', cart: @cart })
         if @cart_item.update(quantity: new_quantity)
-            redirect_to cart_path(@cart), notice: 'Quantidade do carrinho atualizada com sucesso.'
+            redirect_to cart_path(@cart)#, notice: 'Quantidade do carrinho atualizada com sucesso.'
         else
-            redirect_to cart_path(@cart), alert: 'Erro ao atualizar a quantidade do carrinho.'
+            redirect_to cart_path(@cart)#, alert: 'Erro ao atualizar a quantidade do carrinho.'
         end
     end
 
     def downgrade_quantity
         @cart = current_user.cart
-        @product = Product.find(params[:product_id])
+        @product = Product.find_by(id: params[:product_id])
         @cart_item = @cart.cart_items.find_or_initialize_by(product: @product)
 
         if @cart_item && @cart_item.quantity > 1
@@ -68,19 +69,19 @@ class CartsController < ApplicationController
                 new_quantity = @cart_item.quantity - 1
             
                 if @cart_item.update(quantity: new_quantity)
-                    redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+                    redirect_to cart_path(@cart)#, notice: 'Cart quantity updated successfully.'
                 else
-                    redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+                    redirect_to cart_path(@cart)#, alert: 'Error updating cart quantity.'
                 end
             elsif @cart_item && @cart_item.quantity == 1
                 if @cart_item.destroy
-                    redirect_to cart_path(@cart), notice: 'Cart quantity updated successfully.'
+                    redirect_to cart_path(@cart)#, notice: 'Cart quantity updated successfully.'
                 else
-                    redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+                    redirect_to cart_path(@cart)#, alert: 'Error updating cart quantity.'
                 end
             else
                 puts "Cart item not found or quantity not set."
-                redirect_to cart_path(@cart), alert: 'Error updating cart quantity.'
+                redirect_to cart_path(@cart)#, alert: 'Error updating cart quantity.'
             end
         end
     end
