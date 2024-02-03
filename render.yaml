@@ -1,0 +1,23 @@
+databases:
+  - name: ecommerce_rails
+    databaseName: ecommerce_rails
+    user: ecommerce_rails
+    plan: free
+
+services:
+  - type: web
+    name: ecommerce_rails
+    runtime: ruby
+    plan: free
+    buildCommand: "./bin/render-build.sh"
+    # preDeployCommand: "./bin/rails db:migrate" # preDeployCommand only available on paid instance types
+    startCommand: "rails server"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: ecommerce_rails
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: WEB_CONCURRENCY
+        value: 2 # sensible default
