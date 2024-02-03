@@ -1,4 +1,4 @@
-## Introdução
+## Introduction
 
 Ruby on Rails 7.1 project, designed to be a simple e-commerce.
 
