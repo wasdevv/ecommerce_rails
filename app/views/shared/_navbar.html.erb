@@ -8,17 +8,20 @@
           <li><a href="<%= activity_logs_path %>" class="active">Admin Log</a></li>
         <% end %>
         <% if user_signed_in? %>
-        <li><a href="#">Create Product</a></li>
+        <li><a href="<%= new_product_path %>">Create Product</a></li>
         <% end %>
     </ul>
 
     <div class="icons">
-      <% if user_signed_in? && current_user.cart.present? %>
+      <% if user_signed_in? %>
         <a href=" <%= user_home_path(current_user) %>"><i class="bi bi-person"></i></a>
-        <a href="<%= cart_path(current_user.cart) %>"><i class="bi bi-cart"></i></a>
+          <% if current_user.cart.present? %>
+            <a href="<%= cart_path(current_user.cart) %>"><i class="bi bi-cart"></i></a>
+          <% else %>
+            <a href="<%= root_path %>"><i class="bi bi-cart"></i></a>
+          <% end %>
       <% else %>
         <a href=" <%= new_user_session_path %>"><i class="bi bi-person"></i></a>
-        <a href=" <%= new_user_session_path %>"><i class="bi bi-cart"></i></a>
       <% end %>
       <div class="bi bi-list" id="menu-icon"></div>
     </div>

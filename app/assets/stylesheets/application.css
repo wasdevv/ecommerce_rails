@@ -28,24 +28,10 @@ header{
     list-style: none;
 }
 
-#search-box {
-    display: none;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    padding: 10px;
-}
 
-#search-box input {
-    width: 200px;
-    padding: 5px;
-    margin-right: 5px;
-}
-
-#search-box button {
-    padding: 5px 10px;
+header.sticky {
+    background: #ffffff;
+    padding: 14px 11%;
 }
 
 /* Estilo básico para ocultar e exibir a box */
@@ -162,11 +148,6 @@ section {
 .btn:hover {
     letter-spacing: 2px;
     opacity: 0.8;
-}
-
-header.sticky {
-    background: #ffffff;
-    padding: 14px 11%;
 }
 
 .middle-text {

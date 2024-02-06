@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
         if @product.save
             create_activity_log(:product_created, @product, details: { message: 'Product created'})
             flash[:success] = "Product created!"
-            redirect_to products_path
+            redirect_to root_path
         else
             render :new
         end
@@ -42,7 +42,7 @@ class ProductsController < ApplicationController
         @product.destroy
         create_activity_log(:product_deleted, @product, details: { message: 'Product removed '})
         flash[:danger] = "Product deleted."
-        redirect_to products_path
+        redirect_to root_path
     end
     
     private
