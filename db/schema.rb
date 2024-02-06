@@ -43,9 +43,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
   end
 
   create_table "activity_logs", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "trackable_type", null: false
-    t.integer "trackable_id", null: false
+    t.bigint "trackable_id", null: false
     t.integer "action"
     t.text "details"
     t.datetime "created_at", null: false
@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "cart_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "cart_id", null: false
+    t.bigint "product_id", null: false
     t.integer "quantity"
     t.decimal "price"
     t.datetime "created_at", null: false
@@ -66,7 +66,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
@@ -74,8 +74,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
-    t.integer "user_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_comments_on_product_id"
@@ -83,8 +83,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
   end
 
   create_table "order_items", force: :cascade do |t|
-    t.integer "order_id", null: false
-    t.integer "product_id", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
     t.integer "quantity"
     t.decimal "price"
     t.datetime "created_at", null: false
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_21_231402) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
