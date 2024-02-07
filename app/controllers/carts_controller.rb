@@ -2,6 +2,9 @@ class CartsController < ApplicationController
     before_action :authenticate_user!, only: [:add_to_cart]
 
     # without payment logistic, ONLY BACK-END
+    # maybe in future
+
+    # new cart
     def new
         # if the user have one cart
         if current_user.cart.present?
@@ -18,6 +21,7 @@ class CartsController < ApplicationController
         end
     end
 
+    # add product on cart
     def add_to_cart
 
         @product = Product.find_by(id: params[:product_id])
@@ -42,6 +46,7 @@ class CartsController < ApplicationController
         return
     end
 
+    # +1 quantity
     def update_quantity
         @cart = current_user.cart
         @product = Product.find_by(id: params[:product_id])
@@ -55,7 +60,8 @@ class CartsController < ApplicationController
             redirect_to cart_path(@cart)#, alert: 'Erro ao atualizar a quantidade do carrinho.'
         end
     end
-
+    
+    # -1 quantity
     def downgrade_quantity
         @cart = current_user.cart
         @product = Product.find_by(id: params[:product_id])
@@ -97,6 +103,7 @@ class CartsController < ApplicationController
         end
     end
 
+    # remove product from the cart
     def remove_product_from_cart
         @cart = current_user.cart
         @product = Product.find_by(id: params[:product_id])
@@ -120,6 +127,7 @@ class CartsController < ApplicationController
         end
     end
 
+    # destroy the cart
     def destroy
         current_user.destroy
         create_activity_log(:deleted_cart, @cart, details: { message: 'Deleted a cart'})
@@ -139,6 +147,7 @@ class CartsController < ApplicationController
         end
     end
 
+    # before the confirmation with cart, exist the checkout
     def checkout
         @cart = current_user.cart
         @cart_items = @cart.cart_items
@@ -158,6 +167,7 @@ class CartsController < ApplicationController
         end
     end
 
+    # action after user confirmed the order
     def destroy_all_items
         @order = current_user.orders.build
         @order.save

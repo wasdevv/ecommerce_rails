@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
+  
   # action cable
   mount ActionCable.server => '/cable'
 
   resources :products do
     member do
-      delete '/destroy', to: 'products#destroy', as: :destroy
+      match '/destroy', action: :destroy, via: [:get, :delete], as: :destroy
     end
 
     resources :comments, only: [:create, :destroy]

@@ -270,12 +270,13 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   faker (~> 3.2)
-  image_processing (~> 1.2)
+  image_processing (~> 1.12, >= 1.12.2)
   importmap-rails
   jbuilder
   pg
   puma (>= 5.0)
   rails (~> 7.1.2)
+  ruby-vips (~> 2.2)
   selenium-webdriver
   sprockets-rails
   stimulus-rails

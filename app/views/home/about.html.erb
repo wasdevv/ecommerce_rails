@@ -44,7 +44,7 @@
       <div class="box">
         <div class="box-img">
           <% if product.image.attached? %>
-            <%= image_tag(product.image.variant(resize: "100x100")) %>
+            <%= image_tag(product.image, width: 100, heigth: 100 ) %>
           <% else %>
             <%= image_tag("https://i.imgur.com/jl1rTQL.png", width: 100, height: 100) %>
           <% end %>
@@ -57,6 +57,9 @@
             <a href="<%= product_path(product) %>" class="price"><%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %></a>
             <% if product && current_user == product.user %>
               <%= link_to "Edit", edit_product_path(product), class: "edit" %>
+            <% end %>
+            <% if current_user.admin? || product && current_user == product.user %>
+              <%= link_to "Delete?", destroy_product_path(product), class: "edit" %>
             <% end %>
           </div>
           <div class="rating">

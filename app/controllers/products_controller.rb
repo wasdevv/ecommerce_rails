@@ -9,6 +9,8 @@ class ProductsController < ApplicationController
 
     def create
         @product = current_user.products.build(product_params)
+        @product.image.attach(params[:product][:image]) if params[:product][:image]
+        
         if @product.save
             create_activity_log(:product_created, @product, details: { message: 'Product created'})
             flash[:success] = "Product created!"
