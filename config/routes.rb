@@ -13,11 +13,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  resources :activity_logs, only: [:index] do
-    collection do
-      get 'search'
-    end
-  end
+  resources :activity_logs
 
   resources :carts do
     member do

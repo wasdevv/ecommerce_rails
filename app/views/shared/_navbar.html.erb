@@ -23,6 +23,10 @@
       <% else %>
         <a href=" <%= new_user_session_path %>"><i class="bi bi-person"></i></a>
       <% end %>
-      <div class="bi bi-list" id="menu-icon"></div>
+      <% if current_user.orders.present?%>
+        <a href="#"><i class="bi bi-bag-check"></i></a>
+      <% end %>
+      <a href="#"><i class="bi bi-bag-heart"></i></a>
+      <a href="#" class="bi bi-list" id="menu-icon"></a>
     </div>
 </header>

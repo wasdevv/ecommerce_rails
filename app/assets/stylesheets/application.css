@@ -118,7 +118,7 @@ section {
 
 .home.img img {
     width: 100%; /* altura */
-    height: 50%; /* llargura */
+    height: 50%; /* largura */
 }
 
 .home-text h4 {
@@ -382,4 +382,3 @@ section {
 .floating-box p {
     margin: 0px;
 }
-
