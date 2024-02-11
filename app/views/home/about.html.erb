@@ -87,14 +87,22 @@
 
 <script>
   function showMoreProducts() {
-    var counter = 0;
-    document.querySelectorAll('.product-content').forEach(function(el) {
-      if ( counter > 5 ) {
+    var showMoreButton = document.querySelector('.show-more button');
+    var buttonText = showMoreButton.textContent;
+
+    if (buttonText == " > ") {
+      document.querySelectorAll('.product-content').forEach(function(el) {
         el.style.display = 'block';
-      }
-      counter++;
-    });
-    document.querySelector('.show-more').style.display = 'none';
+      });
+      showMoreButton.textContent = " < ";
+    } else {
+      document.querySelectorAll('.product-content').forEach(function(el, index) {
+        if (index > 5) {
+          el.style.display = 'none';
+        }
+      });
+      showMoreButton.textContent = " > ";
+    }
   }
 </script>
 

@@ -93,7 +93,7 @@
 }
 
 .product-content {
-    display: grid;
+    display: block;
     grid-template-columns: repeat(auto-fit, minmax(300px, auto));
     gap: 32px;
     align-items: center;

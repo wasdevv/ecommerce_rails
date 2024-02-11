@@ -1,7 +1,9 @@
 <br>
 <br>
+<br>
+<br>
 <table class="table table-borderless w-auto ms-4">
-  <caption>Want to buy more? <%= link_to "Buy More", products_path %></caption>
+  <caption>Want to buy more? <%= link_to "Buy More", root_path %></caption>
   <% total_order = 0 %>
 
   <% @cart_items.each do |cart_item| %>
@@ -42,6 +44,6 @@
     <p class="card-text">Delivery made by: <strong>Ruby Shop</strong>!</p>
     <a href="https://localhost:3000" class="card-link">Increase Warranty</a>
     <a href="https://localhost:3000" class="card-link">Anti-Theft Guarantee</a>
-    <%= link_to "Confirm Order", checkout_cart_path(current_user), class: "card-link"%>
+    <%= link_to "Confirm Order", checkout_cart_path(current_user), class: "card-link" %>
   </div>
 </div>
