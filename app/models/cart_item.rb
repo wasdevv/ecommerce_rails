@@ -4,4 +4,5 @@ class CartItem < ApplicationRecord
 
   validates :product, uniqueness: { scope: :cart_id } # adding 1 item p/click in link_to
                                                       # can change in _cart_table.html.erb
+                                                      has_one_attached :image
 end

@@ -5,5 +5,4 @@ class Order < ApplicationRecord
   has_many :cart_items, through: :order_items
   has_many :activity_logs, as: :trackable, dependent: :destroy
 
-  
 end

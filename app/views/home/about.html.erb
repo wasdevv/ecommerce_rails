@@ -58,7 +58,7 @@
             <% if product && current_user == product.user %>
               <%= link_to "Edit", edit_product_path(product), class: "edit" %>
             <% end %>
-            <% if current_user.admin? || product && current_user == product.user %>
+            <% if current_user.present? && (current_user.admin? || (product.present? && current_user == product.user)) %>
               <%= link_to "Delete?", destroy_product_path(product), class: "edit" %>
             <% end %>
           </div>

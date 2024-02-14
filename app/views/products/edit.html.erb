@@ -1,3 +1,28 @@
 <br>
 <br>
 <br>
+<br>
+<br>
+<div class="text-center">
+  <p>Edit <strong>Product</strong></p>
+
+  <%= form_for @product do |f| %>
+
+  <%= f.label :Name %>
+  <%= f.text_field :name, placeholder: "Type a name", value: @product.name %>
+  <br>
+  <%= f.label :Quantity %>
+  <%= f.number_field :quantity, placeholder: "Type a Quantity", value: @product.quantity %>
+  <br>
+  <%= f.label :Price %>
+  <%= f.number_field :price, placeholder: "Type a Price", value: @product.price %>
+  <br>
+  <%= f.label :Description %>
+  <%= f.text_field :description, placeholder: "Type a Description", value: @product.description %>
+  <br>
+  <%= f.label :Image %>
+  <%= f.file_field :image %>
+  <br>
+  <%= f.submit 'Update Product' %>
+  <% end %>
+</div>

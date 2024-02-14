@@ -2,16 +2,23 @@
 <br>
 <br>
 <br>
-
-<% order_number = 1 %>
-<% @orders.order(id: :asc).each do |order| %>
-  <p>Pedido <%= order_number %></p>
+<div class="text-center">
+  <strong>Your Orders</strong>
+</div>
+<br>
+<br>
+<div class="text-center">
+  <% order_number = 1 %>
+  <% @orders.order(id: :asc).each do |order| %>
+    <p><strong>Order: </strong> <%= order_number %></p>
   
-  <ul>
-    <% order.order_items.each do |order_item| %>
-      <li><%= order_item.product.name %></li> - Quantidade: <%= order_item.quantity %>
-    <% end %>
-  </ul>
+    <ul class="text-center">
+      <% order.order_items.each do |order_item| %>
+        <strong>Name</strong>: <li><%= order_item.product.name %></li>
+        <strong>Quantity</strong>: <%= order_item.quantity %>
+      <% end %>
+    </ul>
 
-  <% order_number += 1 %>
-<% end %>
+    <% order_number += 1 %>
+  <% end %>
+</div>

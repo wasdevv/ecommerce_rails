@@ -150,20 +150,22 @@ class CartsController < ApplicationController
     # before the confirmation with cart, exist the checkout
     def checkout
         @cart = current_user.cart
-        @cart_items = @cart.cart_items
+        @order = @current_user.orders.build
 
-        @order = current_user.orders.build
-
-        @cart_items.each do |cart_item|
+        @cart.cart_items.each do |cart_item|
             @order.order_items.build(
                 product: cart_item.product,
                 quantity: cart_item.quantity,
-                price: cart_item.price
+                price: cart_item.product.price * cart_item.quantity
             )
         end
 
         if @order.save
             create_activity_log(:created_order, @order, details: { message: 'Order created '})
+
+            current_user.orders << @order
+
+            @cart.cart_items.destroy_all
         end
     end
 

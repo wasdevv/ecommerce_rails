@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'user/admin_user'
   devise_for :users
   get "up" => "rails/health#show", as: :rails_health_check
   
@@ -32,14 +33,12 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :home, only: [] do
+  match '/admin_user', to: 'users#admin_user', via: [:get, :post]
+  
+  resources :home do
     member do
-      get '/history', to: 'home#history', as: :history
+      get '/history/', to: 'home#history', as: :history
       get '/user/', to: 'home#user', as: :user
-    end
-    
-    collection do
-      get 'about'
     end
   end
 

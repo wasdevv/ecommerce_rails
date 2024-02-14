@@ -23,10 +23,12 @@
       <% else %>
         <a href=" <%= new_user_session_path %>"><i class="bi bi-person"></i></a>
       <% end %>
-      <% if current_user.orders.present?%>
-        <a href="#"><i class="bi bi-bag-check"></i></a>
+      <% if current_user.present? && current_user.orders.present? %>
+        <a href="<%= history_home_path(current_user) %>"><i class="bi bi-bag-check"></i></a>
       <% end %>
       <a href="#"><i class="bi bi-bag-heart"></i></a>
-      <a href="#" class="bi bi-list" id="menu-icon"></a>
+      <%# <a href="#" class="bi bi-list" id="menu-icon"></a> %>
+      <a href="<%= admin_user_path %>" class="btn">Portfolio</a>
+      
     </div>
 </header>

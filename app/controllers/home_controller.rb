@@ -4,8 +4,12 @@ class HomeController < ApplicationController
         @products = Product.all
     end
 
+    def favorite
+    end
+
     def user
         @user = current_user
+
     end
 
     def history
