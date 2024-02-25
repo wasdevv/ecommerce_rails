@@ -19,8 +19,7 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - [✓] - Implement management of Products, carts and orders created by users.
 - [✓] - Use Role 1 (Administrator) created in rails g devise User, as a way of administering the entire site.
 - [✓] - Addition of comments to the project, where only another user other than the member can comment.
-- [ ] - Notification bootstrap icon to show user's current/or past notifications with expiration up to 30d.
-- [ ] - 
+- [✓] - ActionCable, ActionChannel & AJax on Cart
 
 ## Project dependencies
 
