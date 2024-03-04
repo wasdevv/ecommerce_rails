@@ -6,6 +6,7 @@
         <li><a href="#">Shop</a></li>
         <% if user_signed_in? && current_user.admin? %>
           <li><a href="<%= activity_logs_path %>" class="active">Admin Log</a></li>
+          <li><a href="<%= admin_root_path %>" class="active">Admin Dashboard</a></li>
         <% end %>
         <% if user_signed_in? %>
         <li><a href="<%= new_product_path %>">Create Your Product</a></li>
