@@ -3,10 +3,10 @@
 
     <ul class="navbar">
         <li><a href="<%= root_path %>" class="active">Home</a></li>
-        <li><a href="#">Shop</a></li>
+        <%# <li><a href="#">Shop</a></li> %>
         <% if user_signed_in? && current_user.admin? %>
           <li><a href="<%= activity_logs_path %>" class="active">Admin Log</a></li>
-          <li><a href="<%= admin_root_path %>" class="active">Admin Dashboard</a></li>
+          <li><a href="<%= admin_root_path %>" class="active">Admin Board</a></li>
         <% end %>
         <% if user_signed_in? %>
         <li><a href="<%= new_product_path %>">Create Your Product</a></li>
@@ -29,7 +29,8 @@
       <% end %>
       <a href="#"><i class="bi bi-bag-heart"></i></a>
       <%# <a href="#" class="bi bi-list" id="menu-icon"></a> %>
-      <a href="<%= admin_user_path %>" class="btn">Portfolio</a>
-      
+      <% unless user_signed_in? %>
+        <a href="<%= admin_user_path %>" class="btn">Portfolio</a>
+      <% end %>
     </div>
 </header>
