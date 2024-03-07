@@ -19,3 +19,4 @@ production:
   database: ecommerce_rails_production
   username: postgres
   password: 20101600
+  url: <%= ENV["DATABASE_URL"] %>

@@ -61,7 +61,7 @@
 
 .row {
     padding: 40px 30px;
-    background: #e3ffe6;
+    background: transparent;
     border-radius: 20px;
     transition: all .45s ease;
 }
@@ -261,7 +261,7 @@
     }
 }
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
     #menu-icon {
         display: initial;
         height: 50px;
@@ -293,7 +293,7 @@
     .navbar open {
         right: 0;
     }
-}
+} */
 
 @media (max-width: 940px) {
     .home {
