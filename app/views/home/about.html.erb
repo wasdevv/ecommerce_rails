@@ -57,6 +57,7 @@
             <a href="<%= product_path(product) %>" class="price"><%= number_to_currency(product.price, unit: 'R$', separator: ',', delimiter: '.') %></a>
             <% if product && current_user == product.user %>
               <%= link_to "Edit", edit_product_path(product), class: "edit" %>
+              <%= link_to "Show", product_path(product), class: "edit" %>
             <% end %>
             <% if current_user.present? && (current_user.admin? || (product.present? && current_user == product.user)) %>
               <%= link_to "Delete?", destroy_product_path(product), class: "edit" %>
