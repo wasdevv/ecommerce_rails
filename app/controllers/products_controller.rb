@@ -21,15 +21,15 @@ class ProductsController < ApplicationController
     end
 
     def show
-        @product = Product.find_by(uuid: params[:id])
+        @product = Product.find(wparams[:id])
     end
 
     def edit
-        @product = Product.find_by(uuid: params[:id])
+        @product = Product.find(wparams[:id])
     end
 
     def update
-        @product = Product.find_by(uuid: params[:id])
+        @product = Product.find(wparams[:id])
         if @product.update(product_params)
             create_activity_log(:product_updated, @product, details: { message: 'Product updated' })
             redirect_to product_path(@product)
@@ -40,7 +40,7 @@ class ProductsController < ApplicationController
     end
 
     def destroy
-        @product = Product.find_by(uuid: params[:id])
+        @product = Product.find(wparams[:id])
         @product.destroy
         create_activity_log(:product_deleted, @product, details: { message: 'Product removed '})
         flash[:danger] = "Product deleted."
