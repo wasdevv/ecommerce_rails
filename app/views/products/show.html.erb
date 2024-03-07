@@ -3,7 +3,7 @@
 <br>
 <div class="container details-container">
   <div class="details-header">
-    <p>Details of <strong>Product </strong>ID: <%= @product.uuid %> </p>
+    <p>Details of <strong>Product </strong>ID: <%= @product.id %> </p>
   </div>
 </div>
 
@@ -18,7 +18,7 @@
       <p class="text-start fs-2 text-dark"><strong><%= number_to_currency(@product.price, unit: 'R$', separator: ',', delimiter: '.') %></p>
       <p class="text-start fs-5 text-dark">Adittions <strong>Coming Soon!</strong></p>
       <br>
-      <%= button_to(add_to_cart_cart_path(product_id: @product.uuid), method: :post, class: "btn btn-primary") do %>
+      <%= button_to(add_to_cart_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary") do %>
         Add into Cart <i class="bi bi-plus-circle"></i>
       <% end %>
     </div>
