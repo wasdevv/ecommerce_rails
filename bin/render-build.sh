@@ -5,4 +5,4 @@ set -o errexit
 bundle install
 bundle exec rails assets:precompile
 bundle exec rails assets:clean
-RAILS_ENV=production bundle exec rails db:migratew
+RAILS_ENV=production bundle exec rails db:migrate
