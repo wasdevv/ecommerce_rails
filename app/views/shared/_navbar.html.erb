@@ -9,28 +9,28 @@
           <li><a href="<%= admin_root_path %>" class="active">Admin Board</a></li>
         <% end %>
         <% if user_signed_in? %>
-        <li><a href="<%= new_product_path %>">Create Your Product</a></li>
+          <li><a href="<%= new_product_path %>">Create Your Product</a></li>
         <% end %>
     </ul>
 
     <div class="icons">
-      <% if user_signed_in? %>
-        <a href=" <%= user_home_path(current_user) %>"><i class="bi bi-person"></i></a>
-          <% if current_user.cart.present? %>
-            <a href="<%= cart_path(current_user.cart) %>"><i class="bi bi-cart"></i></a>
+      <div class="dropdown">
+        <button class="#" type="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="bi bi-person"></i>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <% if user_signed_in?%>
+            <li><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
+            <li><%= link_to "Profile", user_home_path(current_user), class: "dropdown-item" %></li>
           <% else %>
-            <a href="<%= root_path %>"><i class="bi bi-cart"></i></a>
+            <li><%= link_to "New? Sign In", new_user_registration_path, class: "dropdown-item" %></li>
           <% end %>
-      <% else %>
-        <a href=" <%= new_user_session_path %>"><i class="bi bi-person"></i></a>
-      <% end %>
-      <% if current_user.present? && current_user.orders.present? %>
-        <a href="<%= history_home_path(current_user) %>"><i class="bi bi-bag-check"></i></a>
-      <% end %>
+        </ul>
+      </div>
       <a href="#"><i class="bi bi-bag-heart"></i></a>
       <%# <a href="#" class="bi bi-list" id="menu-icon"></a> %>
       <% unless user_signed_in? %>
-        <a href="<%= admin_user_path %>" class="btn">Portfolio</a>
+        <a href="<%= admin_user_path %>" class="btn-home">Portfolio</a>
       <% end %>
     </div>
 </header>

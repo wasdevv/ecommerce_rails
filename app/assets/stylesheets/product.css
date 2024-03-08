@@ -29,7 +29,24 @@
     margin: 25px 0 45px;
 }
 
-.btn {
+button#dropdownMenuButton1 {
+    border: none; /* Remove a borda */
+    outline: none; /* Remove o contorno ao focar */
+    height: 50px;
+    width: 50px;
+    background: #f7f9fb;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: #334155;
+    font-size: 22px;
+    margin-right: 20px;
+    margin-left: 10px;
+    transition: all .45s ease;
+}
+
+.btn-home {
     display: inline-block;
     padding: 16px 30px;
     background: #0f172a;
@@ -40,7 +57,7 @@
     transition: all .45s ease;
 }
 
-.btn:hover {
+.btn-home:hover {
     letter-spacing: 2px;
     opacity: 0.8;
 }

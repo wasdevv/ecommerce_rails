@@ -10,3 +10,17 @@ document.addEventListener("DOMContentLoaded", function() {
         header.classList.toggle("sticky", window.scrollY > 0);
     });
 });
+
+// $(document).on('turbolinks:load', function() {
+    $('#register-link').click(function(e) {
+    //   e.preventDefault();
+    //   $.ajax({
+        // url: '<%= new_user_registration_path %>',
+        // method: 'GET',
+        // success: function(data) {
+            // console.log(data);
+        //   $('#registration-form-container').html(data);
+        // }
+    //   });
+    // });
+// });
