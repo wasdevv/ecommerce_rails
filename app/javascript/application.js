@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 // $(document).on('turbolinks:load', function() {
-    $('#register-link').click(function(e) {
+    // $('#register-link').click(function(e) {
     //   e.preventDefault();
     //   $.ajax({
         // url: '<%= new_user_registration_path %>',
