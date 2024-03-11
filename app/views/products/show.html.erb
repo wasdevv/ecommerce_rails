@@ -12,7 +12,8 @@
     <p class="text-black"><strong><i class="bi bi-file-earmark-text"></i> Description of Product:</strong></p>
     <br>
     <br>
-    <p class="text-black"><%= @product.description %></p>
+    <p class="text-black">Name: <%= @product.name %></p>
+    <p class="text-black">Description: <%= @product.description %></p>
     <div class="info-product-container">
       <p class="text-start fs-6 text-black">Product by: <strong><%= @product.user.email %></strong></p>
       <p class="text-start fs-2 text-dark"><strong><%= number_to_currency(@product.price, unit: 'R$', separator: ',', delimiter: '.') %></p>

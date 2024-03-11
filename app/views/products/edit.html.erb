@@ -2,27 +2,56 @@
 <br>
 <br>
 <br>
-<br>
-<div class="text-center">
-  <p>Edit <strong>Product</strong></p>
+<div class="container">
 
-  <%= form_for @product do |f| %>
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
 
-  <%= f.label :Name %>
-  <%= f.text_field :name, placeholder: "Type a name", value: @product.name %>
-  <br>
-  <%= f.label :Quantity %>
-  <%= f.number_field :quantity, placeholder: "Type a Quantity", value: @product.quantity %>
-  <br>
-  <%= f.label :Price %>
-  <%= f.number_field :price, placeholder: "Type a Price", value: @product.price %>
-  <br>
-  <%= f.label :Description %>
-  <%= f.text_field :description, placeholder: "Type a Description", value: @product.description %>
-  <br>
-  <%= f.label :Image %>
-  <%= f.file_field :image %>
-  <br>
-  <%= f.submit 'Update Product' %>
-  <% end %>
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                      <%= form_for @product do |f| %>
+                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">New Product!</h1>
+                                </div>
+                                    <div class="form-group">
+                                        <%= f.label :name, class: "form-control-label" %>
+                                        <%=  f.text_field :name, class: "form-control form-control-user", placeholder: "Enter name of Product...", autofocus: true %>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :quantity, class: "form-control-label" %>
+                                        <%= f.number_field :quantity, class: "form-control form-control-user", placeholder: "Quantity" %>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :price, class: "form-control-label" %>
+                                        <%= f.number_field :price, class: "form-control form-control-user", placeholder: "Price" %>
+                                    </div>
+                                    <div class="form-group">
+                                        <%= f.label :description, class: "form-control-label" %>
+                                        <%= f.text_field :description, class: "form-control form-control-user", placeholder: "Description" %>
+                                    </div>
+                                <hr>
+                                    <div class="form-group">
+                                        <%= f.label :Image %>
+                                        <%= f.file_field :image %>
+                                    </div>
+                                <hr>
+                                <%= f.submit "Update", class: "btn btn-primary btn-user btn-block" %>
+                                <% end %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
