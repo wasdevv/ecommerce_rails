@@ -165,6 +165,10 @@ class CartsController < ApplicationController
 
             current_user.orders << @order
 
+            # Remove -1 from quantity and save the product.
+            @product.quantity -= 1
+            @product.save
+
             @cart.cart_items.destroy_all
         end
     end

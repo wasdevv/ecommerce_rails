@@ -7,7 +7,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # config image_processor vips
-  config.active_storage.variant_processor = :vips
+  # config.active_storage.variant_processor = :vips
   
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

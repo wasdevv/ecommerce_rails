@@ -14,4 +14,9 @@ class Product < ApplicationRecord
 
     # active storage image
     has_one_attached :image
+
+    # convert on webp image
+    def image_webp
+        image.variant(format: "webp")
+    end
 end
