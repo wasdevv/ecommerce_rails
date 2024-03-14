@@ -1,6 +1,6 @@
-## Deploying by Render
+## Production by Render
 
-<div class="text-center">https://ecommerce-rails-t15a.onrender.com</div>
+<div>https://ecommerce-rails-t15a.onrender.com</div>
 
 ## Introduction
 
