@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_10_172721) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_13_232634) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -44,7 +44,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_172721) do
   end
 
   create_table "activity_logs", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "user_id"
+    t.uuid "user_id", null: false
     t.string "trackable_type", null: false
     t.bigint "trackable_id", null: false
     t.integer "action"
@@ -52,6 +52,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_172721) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["trackable_type", "trackable_id"], name: "index_activity_logs_on_trackable"
+    t.index ["user_id"], name: "index_activity_logs_on_user_id"
   end
 
   create_table "cart_items", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -127,6 +128,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_10_172721) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activity_logs", "users"
   add_foreign_key "favorites", "products"
   add_foreign_key "favorites", "users"
   add_foreign_key "products", "users"

@@ -1,6 +1,8 @@
 class Product < ApplicationRecord
     belongs_to :user
 
+    has_many :favorites, class_name: 'Favorite'
+
     has_many :cart_items
     has_many :carts, through: :cart_items
     has_many :comments

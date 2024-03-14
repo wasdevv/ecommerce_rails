@@ -9,8 +9,11 @@ Rails.application.routes.draw do
   resources :products do
     member do
       match '/destroy', action: :destroy, via: [:get, :delete], as: :destroy
+
+      post 'favorite', action: :favorite, as: :favorite
     end
 
+    resources :favorites
     resources :comments, only: [:create, :destroy]
   end
 

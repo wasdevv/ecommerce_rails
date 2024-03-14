@@ -7,6 +7,20 @@ class ProductsController < ApplicationController
         @product = Product.new
     end
 
+    def favorite
+        @product = Product.find(params[:id])
+        
+        if current_user.favorites.exists?(product_id: @product.id)
+            current_user.favorites.find_by(product_id: @product.id).destroy
+            create_activity_log(:favorite_removed, @product, details: { message: 'Favorite removed'})
+            redirect_to @product, notice: 'Product removed from favorites'
+        else
+            current_user.favorites.create(product: @product)
+            create_activity_log(:favorite_product, @product, details: { message: 'Product favorited'})
+            redirect_to @product, notice: 'Product added to favorites'
+        end
+    end
+
     def create
         @product = current_user.products.build(product_params)
         @product.image.attach(params[:product][:image]) if params[:product][:image]

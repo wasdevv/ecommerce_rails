@@ -9,6 +9,8 @@ class User < ApplicationRecord
          has_many :products, dependent: :destroy
          has_many :orders
 
+         has_many :favorites
+
          enum role: { user: 0, admin: 1 }
 
          has_many :activity_logs, as: :trackable, class_name: 'ActivityLog'
