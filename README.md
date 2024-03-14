@@ -1,3 +1,7 @@
+## Deploying by Render
+
+<div class="text-center">https://ecommerce-rails-t15a.onrender.com</div>
+
 ## Introduction
 
 Ruby on Rails 7.1 project, designed to be a simple e-commerce.
