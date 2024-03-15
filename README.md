@@ -27,9 +27,9 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 
 ## Project Dependencies
 
-- Bootstrap 5.x    |
-- Bootstrap Icons  | CDN
-- JQuery           |
+- Bootstrap 5.x
+- Bootstrap Icons
+- JQuery
 
 - Ruby - 3.2.2
 - Rails - 7.1.2

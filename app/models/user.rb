@@ -10,6 +10,7 @@ class User < ApplicationRecord
          has_many :orders
 
          has_many :favorites
+         has_many :favorited_products, through: :favorites, source: :product
 
          enum role: { user: 0, admin: 1 }
 

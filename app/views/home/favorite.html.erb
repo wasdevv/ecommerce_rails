@@ -1,0 +1,14 @@
+<br>
+<br>
+<br>
+<br>
+<div class="text-center">
+  <strong>Your Favorites</strong>
+</div>
+<br>
+<br>
+<div class="text-center">
+  <% @user.favorited_products.each do |product| %>
+    <p><strong>Name</strong>: <%= product.name %> <%= link_to "See Product", product_path(product) %> <%= link_to "Remove Favorite", favorite_product_path(product), method: :delete, remote: true %></p>
+  <% end %>
+</div>

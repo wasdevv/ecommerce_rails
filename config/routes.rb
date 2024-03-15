@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     member do
       match '/destroy', action: :destroy, via: [:get, :delete], as: :destroy
 
-      post 'favorite', action: :favorite, as: :favorite
+      match 'favorite', action: :favorite, via: [:get, :post], as: :favorite
     end
 
     resources :favorites
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     member do
       get '/history/', to: 'home#history', as: :history
       get '/user/', to: 'home#user', as: :user
+      get '/favorite/', to: 'home#favorite', as: :favorite
     end
   end
 

@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+    before_action :authenticate_user!, only: [:favorite]
+    
     def index
         @products = Product.all
     end
@@ -10,7 +12,7 @@ class ProductsController < ApplicationController
     def favorite
         @product = Product.find(params[:id])
         
-        if current_user.favorites.exists?(product_id: @product.id)
+        if current_user.present? && current_user.favorites.exists?(product_id: @product.id)
             current_user.favorites.find_by(product_id: @product.id).destroy
             create_activity_log(:favorite_removed, @product, details: { message: 'Favorite removed'})
             redirect_to @product, notice: 'Product removed from favorites'

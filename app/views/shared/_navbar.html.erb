@@ -19,7 +19,7 @@
           <i class="bi bi-person"></i>
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <% if user_signed_in?%>
+          <% if user_signed_in? %>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
             <li><%= link_to "Profile", user_home_path(current_user), class: "dropdown-item" %></li>
           <% else %>
@@ -27,7 +27,12 @@
           <% end %>
         </ul>
       </div>
-      <a href="#"><i class="bi bi-bag-heart"></i></a>
+      <% if current_user.present? && current_user.orders.present? %>
+        <a href="<%= history_home_path(current_user) %>"><i class="bi bi-bag-check"></i></a>
+      <% end %>
+      <% if current_user.present? && current_user.favorites.present? %>
+        <a href="<%= favorite_home_path(current_user)%>"><i class="bi bi-bag-heart"></i></a>
+      <% end %>
       <%# <a href="#" class="bi bi-list" id="menu-icon"></a> %>
       <% unless user_signed_in? %>
         <a href="<%= admin_user_path %>" class="btn-home">Portfolio</a>

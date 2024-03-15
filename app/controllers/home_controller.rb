@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     end
 
     def favorite
+        @user = current_user
     end
 
     def user
