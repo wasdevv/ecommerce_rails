@@ -3,6 +3,9 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "channels"
 
+import "chartkick"
+import "Chart.bundle"
+
 document.addEventListener("DOMContentLoaded", function() {
     const header = document.querySelector("header");
 

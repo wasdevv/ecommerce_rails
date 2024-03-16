@@ -116,6 +116,8 @@ GEM
     ffi (1.16.3-x64-mingw-ucrt)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    groupdate (6.4.0)
+      activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -272,6 +274,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   faker (~> 3.2)
+  groupdate (~> 6.4)
   image_processing (~> 1.12, >= 1.12.2)
   importmap-rails
   jbuilder

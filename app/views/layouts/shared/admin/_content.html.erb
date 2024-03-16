@@ -125,7 +125,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
+                        <%= line_chart Product.group_by_day(:created_at).count %>
                     </div>
                 </div>
             </div>
