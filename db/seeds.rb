@@ -1,3 +1,8 @@
+
+# Basic rails db:seed for testing the project.
+
+# # IF U WANT MORE USERS/ETC, just change the number.
+
 def generate_random_email
     Faker::Internet.email
 end
