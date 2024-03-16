@@ -1,11 +1,11 @@
 <header>
     <a href="#" class="logo"><img src="https://i.imgur.com/e75G7zQ.png"></a>
 
+    
+    <%# Navbar Links_to %>
     <ul class="navbar">
         <li><a href="<%= root_path %>" class="active">Home</a></li>
-        <%# <li><a href="#">Shop</a></li> %>
         <% if user_signed_in? && current_user.admin? %>
-          <li><a href="<%= activity_logs_path %>" class="active">Admin Log</a></li>
           <li><a href="<%= admin_root_path %>" class="active">Admin Board</a></li>
         <% end %>
         <% if user_signed_in? %>
@@ -13,6 +13,8 @@
         <% end %>
     </ul>
 
+    
+    <%# Icons %>
     <div class="icons">
       <div class="dropdown">
         <button class="#" type="#" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -33,7 +35,7 @@
       <% if current_user.present? && current_user.favorites.present? %>
         <a href="<%= favorite_home_path(current_user)%>"><i class="bi bi-bag-heart"></i></a>
       <% end %>
-      <%# <a href="#" class="bi bi-list" id="menu-icon"></a> %>
+
       <% unless user_signed_in? %>
         <a href="<%= admin_user_path %>" class="btn-home">Portfolio</a>
       <% end %>

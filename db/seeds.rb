@@ -13,7 +13,7 @@ def generate_random_product(user)
     )
 end
 
-1000.times do
+100.times do
     user = User.create(email: generate_random_email, password: 'projectrails' )
 
     generate_random_product(user)

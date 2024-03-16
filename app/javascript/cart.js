@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         url: '/carts/update_quantity/' + productId,
         dataType: 'json',
         success: function(response) {
-          // Atualiza a quantidade na página sem recarregar
+          // update the quantity without update the site
           $('#' + productId + ' .quantity').text(response.new_quantity);
         },
         error: function(error) {

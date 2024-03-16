@@ -51,9 +51,9 @@ header.sticky {
 
 .navbar a{
     align-items: center;
-    font-size: 14px;
+    font-size: 15px;
     color: #334155;
-    font-weight: 400;
+    font-weight: 500;
     padding: 8px 10px;
     margin: 0 3px;
     background-color: transparent;
@@ -83,8 +83,8 @@ header.sticky {
     justify-content: center;
     border-radius: 50%;
     color: #334155;
-    font-size: 22px;
-    margin-right: 20px;
+    font-size: 24px;
+    margin-right: 10px;
     margin-left: 10px;
     transition: all .45s ease;
 }
