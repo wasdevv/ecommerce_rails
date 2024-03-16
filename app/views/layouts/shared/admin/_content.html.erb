@@ -125,7 +125,7 @@
                 <!-- Card Body -->
                 <div class="card-body">
                     <div class="chart-area">
-                        <%= line_chart Product.group_by_day(:created_at).count %>
+                        <%= line_chart Order.group_by_day(:created_at).sum(:revenue) %>
                     </div>
                 </div>
             </div>

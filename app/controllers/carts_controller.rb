@@ -152,6 +152,8 @@ class CartsController < ApplicationController
         @cart = current_user.cart
         @order = @current_user.orders.build
 
+        total_revenue = 0
+
         @cart.cart_items.each do |cart_item|
             @order.order_items.build(
                 product: cart_item.product,
@@ -160,15 +162,21 @@ class CartsController < ApplicationController
             )
         end
 
+        @order.revenue = total_revenue
+
         if @order.save
             create_activity_log(:created_order, @order, details: { message: 'Order created '})
 
-            current_user.orders << @order
+            # current_user.orders << @order
 
             # Remove -1 from quantity and save the product.
-            @product.quantity -= 1
-            @product.save
+            @cart.cart_items.each do |cart_item|
+                product = cart_item.product
+                product.quantity -= 1
+                product.save
+            end
 
+            # clear all the cart items
             @cart.cart_items.destroy_all
         end
     end
