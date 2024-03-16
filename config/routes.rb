@@ -47,6 +47,8 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    get 'charts'
     root "home#index"
   end
 

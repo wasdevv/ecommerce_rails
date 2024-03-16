@@ -3,4 +3,10 @@ class Admin::HomeController < AdminController
 
     def index
     end
+
+    def charts
+    end
+
+    def pages
+    end
 end
