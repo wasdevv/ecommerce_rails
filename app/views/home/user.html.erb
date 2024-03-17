@@ -7,6 +7,6 @@
     <%= link_to "Edit", edit_user_registration_path %>
     <%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete } %>
   <% else %>
-    <%= link_to 'Login', new_user_session_path %>
+    <%= render 'devise/sessions/new' %>
   <% end %>
 </div>

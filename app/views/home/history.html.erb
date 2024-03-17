@@ -8,17 +8,22 @@
 <br>
 <br>
 <div class="text-center">
-  <% order_number = 1 %>
-  <% @orders.order(id: :asc).each do |order| %>
-    <p><strong>Order: </strong> <%= order_number %></p>
+  <%# if the user HAVE orders.  %>
+    <% if @orders.any? %>
+      <% order_number = 1 %>
+      <% @orders.order(id: :asc).each do |order| %>
+        <p><strong>Order: </strong> <%= order_number %></p>
   
-    <ul class="text-center">
-      <% order.order_items.each do |order_item| %>
-        <strong>Name</strong>: <li><%= order_item.product.name %></li>
-        <strong>Quantity</strong>: <%= order_item.quantity %>
-      <% end %>
-    </ul>
+      <ul class="text-center">
+        <% order.order_items.each do |order_item| %>
+          <strong>Name</strong>: <li><%= order_item.product.name %></li>
+          <strong>Quantity</strong>: <%= order_item.quantity %>
+        <% end %>
+      </ul>
 
-    <% order_number += 1 %>
-  <% end %>
+      <% order_number += 1 %>
+      <% end %>
+    <% else %>
+        <p class="text-center">Orders not found.</p>
+    <% end %>
 </div>

@@ -8,9 +8,6 @@
         <% if user_signed_in? && current_user.admin? %>
           <li><a href="<%= admin_root_path %>" class="active">Admin Board</a></li>
         <% end %>
-        <% if user_signed_in? %>
-          <li><a href="<%= new_product_path %>">Create Your Product</a></li>
-        <% end %>
     </ul>
 
     
@@ -29,13 +26,27 @@
           <% end %>
         </ul>
       </div>
-      <% if current_user.present? && current_user.orders.present? %>
+
+      <%# History Section %>
+      <% if current_user.present? %>
         <a href="<%= history_home_path(current_user) %>"><i class="bi bi-bag-check"></i></a>
+      <% else %>
+        <a href="<%= new_user_session_path %>"><i class="bi bi-bag-check"></i></a>
       <% end %>
-      <% if current_user.present? && current_user.favorites.present? %>
-        <a href="<%= favorite_home_path(current_user)%>"><i class="bi bi-bag-heart"></i></a>
+      
+      <%# Favorite Section %>
+      <% if current_user.present? %>
+        <a href="<%= favorite_home_path(current_user) %>"><i class="bi bi-bag-heart"></i></a>
+      <% else %>
+        <a href="<%= new_user_session_path %>"><i class="bi bi-bag-heart"></i></a>
       <% end %>
 
+      <%# Create a new Product Section %>
+      <% if user_signed_in? %>
+        <a href="<%= new_product_path %>"><i class="bi bi-box"></i></a>
+      <% end %>
+
+      <%# Portfolio Button for Jobs/etc %>
       <% unless user_signed_in? %>
         <a href="<%= admin_user_path %>" class="btn-home">Portfolio</a>
       <% end %>
