@@ -1,8 +1,3 @@
-
-# Basic rails db:seed for testing the project.
-
-# # IF U WANT MORE USERS/ETC, just change the number.
-
 def generate_random_email
     Faker::Internet.email
 end
@@ -13,12 +8,12 @@ def generate_random_product(user)
         quantity: Faker::Number.between(from: 1, to: 100),
         price: Faker::Commerce.price,
         description: Faker::Lorem.sentence,
-        created_at: Faker::Date.backward(days: 20),
-        updated_at: Faker::Date.backward(days: 20),
+        created_at: Faker::Date.backward(days: 30),
+        updated_at: Faker::Date.backward(days: 30),
     )
 end
 
-100.times do
+200.times do
     user = User.create(email: generate_random_email, password: 'projectrails' )
 
     generate_random_product(user)
