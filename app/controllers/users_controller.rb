@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def admin_user
 
     email = SecureRandom.hex(5) + "@example.com"
