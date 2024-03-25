@@ -164,7 +164,9 @@ class CartsController < ApplicationController
 
         @order.revenue = total_revenue
 
-        if @order.save
+        current_user.wallet.balance -= total_revenue
+
+        if @order.save && current_user.wallet.save 
             create_activity_log(:created_order, @order, details: { message: 'Order created '})
 
             # current_user.orders << @order

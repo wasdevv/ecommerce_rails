@@ -8,8 +8,8 @@ def generate_random_product(user)
         quantity: Faker::Number.between(from: 1, to: 100),
         price: Faker::Commerce.price,
         description: Faker::Lorem.sentence,
-        created_at: Faker::Date.backward(days: 30),
-        updated_at: Faker::Date.backward(days: 30),
+        created_at: Faker::Date.backward(days: 20),
+        updated_at: Faker::Date.backward(days: 20),
     )
 end
 
