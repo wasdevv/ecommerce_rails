@@ -24,6 +24,8 @@ Focus on the back-end, authentication is done in Devise, with an integer in role
 - [✓] - Use Role 1 (Administrator) created in rails g devise User, as a way of administering the entire site.
 - [✓] - Addition of comments to the project, where only another user other than the member can comment.
 - [✓] - ActionCable, ActionChannel & AJax on Cart
+- [✓] - Wallet for each User
+- [ ] - 
 
 ## Project Dependencies
 
