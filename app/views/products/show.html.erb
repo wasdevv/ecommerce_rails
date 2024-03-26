@@ -12,6 +12,11 @@
     <p class="text-black"><strong><i class="bi bi-file-earmark-text"></i> Description of Product:</strong></p>
     <br>
     <br>
+    <% if @product.image.attached? %>
+      <%= image_tag(@product.image_webp, width: 100, heigth: 100 ) %>
+    <% else %>
+      <%= image_tag("https://i.imgur.com/jl1rTQL.png", width: 100, height: 100) %>
+    <% end %>
     <p class="text-black">Name: <%= @product.name %></p>
     <p class="text-black">Description: <%= @product.description %></p>
     <div class="info-product-container">

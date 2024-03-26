@@ -152,34 +152,45 @@ class CartsController < ApplicationController
         @cart = current_user.cart
         @order = @current_user.orders.build
 
+        # Total Revenue Config
         total_revenue = 0
 
         @cart.cart_items.each do |cart_item|
             @order.order_items.build(
                 product: cart_item.product,
                 quantity: cart_item.quantity,
-                price: cart_item.product.price * cart_item.quantity
+                price: cart_item.price * cart_item.quantity
             )
-        end
 
-        @order.revenue = total_revenue
+            # Total Revenue calculation.
+            total_revenue += cart_item.price * cart_item.quantity
 
-        current_user.wallet.balance -= total_revenue
+            if current_user.wallet.present? && current_user.wallet.balance >= total_revenue
+                current_user.wallet.update(balance: current_user.wallet.balance - total_revenue)
 
-        if @order.save && current_user.wallet.save 
-            create_activity_log(:created_order, @order, details: { message: 'Order created '})
+                if @order.save
+                    current_user.wallet.save
+                    create_activity_log(:created_order, @order, details: { message: 'Created a order'})
 
-            # current_user.orders << @order
+                    # Remove -1 from quantity
+                    @cart.cart_items.each do |cart_item|
+                        product = cart_item.product
+                        product.quantity -= cart_item.quantity
+                        product.save
+                    end
 
-            # Remove -1 from quantity and save the product.
-            @cart.cart_items.each do |cart_item|
-                product = cart_item.product
-                product.quantity -= 1
-                product.save
+                    # Clear All Cart Items
+                    @cart.cart_items.destroy_all
+
+                    flash[:success] = "Order has been success!"
+                    redirect_to root_path
+                else
+                    flash[:error] = "Failed to create order, please try again!"
+
+                    # Simple roolback if failed
+                    raise ActiveRecord::Rollback
+                end
             end
-
-            # clear all the cart items
-            @cart.cart_items.destroy_all
         end
     end
 
