@@ -21,6 +21,7 @@
           <% if user_signed_in? %>
             <li><%= link_to "Logout", destroy_user_session_path, method: :delete, data: { turbo_method: :delete }, class: "dropdown-item" %></li>
             <li><%= link_to "Profile", user_home_path(current_user), class: "dropdown-item" %></li>
+            <li><span class="dropdown-item">Balance: <%= number_to_currency(current_user.wallet.balance) %></span></li>
           <% else %>
             <li><%= link_to "New? Sign In", new_user_registration_path, class: "dropdown-item" %></li>
           <% end %>

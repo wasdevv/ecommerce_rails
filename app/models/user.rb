@@ -9,6 +9,8 @@ class User < ApplicationRecord
          has_many :products, dependent: :destroy
          has_many :orders
 
+         has_one :wallet
+
          has_many :favorites
          has_many :favorited_products, through: :favorites, source: :product
 
@@ -16,7 +18,14 @@ class User < ApplicationRecord
 
          has_many :activity_logs, as: :trackable, class_name: 'ActivityLog'
          has_many :comments, dependent: :destroy
+         
          def admin?
           role == 'admin'
+         end
+
+         private
+
+         def create_wallet_on_user
+          Wallet.create(user: self, balance: 0.00)
          end
 end

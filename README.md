@@ -1,3 +1,7 @@
+## Mental Map
+
+https://whimsical.com/start-CfgNBSQYLFzftqgrabLKkT
+
 ## Production by Render
 
 <div>https://ecommerce-rails-t15a.onrender.com</div>
