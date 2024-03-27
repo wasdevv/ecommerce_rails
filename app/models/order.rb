@@ -7,6 +7,8 @@ class Order < ApplicationRecord
 
   before_save :revenue_calc
 
+  # 
+
   private
 
   def revenue_calc

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+         after_create :create_wallet_on_user
 
          has_one :cart, dependent: :destroy
          has_many :products, dependent: :destroy
