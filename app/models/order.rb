@@ -7,7 +7,15 @@ class Order < ApplicationRecord
 
   before_save :revenue_calc
 
-  # 
+  validate :sufficient_balance
+
+  def sufficient_balance
+    errors.add(:base, "Insufficient balance") user.wallet.present? && user.wallet.balance < total_revenue
+  end
+  
+  def total_revenue
+    order_items.sum(&:price)
+  end
 
   private
 
